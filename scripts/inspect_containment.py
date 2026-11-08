@@ -17,7 +17,11 @@ def inspect_fixtures(stage, config):
     rects = allowed_rectangles(config)
     cache = UsdGeom.BBoxCache(Usd.TimeCode.Default(), ['default', 'render', 'proxy'])
     failures, count = [], 0
-    for p in Usd.PrimRange(stage.GetPrimAtPath('/World/Fixtures')):
+    roots = [stage.GetPrimAtPath('/World/Fixtures')]
+    levels = stage.GetPrimAtPath('/World/Levels')
+    if levels:
+        roots += [p.GetChild('Fixtures') for p in levels.GetChildren() if p.GetChild('Fixtures')]
+    for p in (prim for root in roots for prim in Usd.PrimRange(root)):
         if not p.IsA(UsdGeom.Gprim):
             continue
         count += 1

@@ -19,5 +19,10 @@ over "World"
     {
         token visibility = "invisible"
     }
+
+    over "Levels"
+    {
+        token visibility = "invisible"
+    }
 }
 

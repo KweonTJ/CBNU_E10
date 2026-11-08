@@ -17,7 +17,7 @@
     "floor_border_width": 0.3,
     "ceiling_panel_length": 0.6,
     "ceiling_panel_width": 0.3,
-    "door_height": 2.1,
+    "door_height": 2.26,
     "stair_visible_risers": 13,
     "stair_tread": 0.28,
     "stair_center_gap": 0.18,
@@ -68,7 +68,7 @@
     "38.4 m length is an editable visual-layout estimate, not a surveyed or recovered video-odometry measurement.",
     "13 risers are a visual count estimate; 0.28 m tread and terminal landings are inferred.",
     "Far stairs and downward-flight completion reuse estimated start-flight dimensions; hidden geometry is not observed.",
-    "Only the filmed corridor level and stair terminal landings are modeled, not full upper/lower floors or rooms behind doors.",
+    "All six interiors repeat the surveyed third-floor layout at the user's request; floors other than 3 are not independent survey reconstructions.",
     "Room-door count, spacing, signs and elevator dimensions are approximate; no unverified room names are reproduced.",
     "Closed doors and elevator are static; no robot policy or door/elevator animation is included."
   ]

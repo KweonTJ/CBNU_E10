@@ -8,6 +8,8 @@ from pathlib import Path
 
 from pxr import Gf, Sdf, Usd, UsdGeom, UsdLux, UsdPhysics, UsdShade
 from build_exterior import build_exterior
+from build_lighting import build_lighting
+from build_levels import build_levels
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'worlds' / 'cbnu_e10'
@@ -56,6 +58,7 @@ class Builder:
     def __init__(self, config, filename):
         self.c = config
         self.m, self.e = config['measured'], config['estimated']
+        self.lighting = json.loads((OUT/'config/lighting.json').read_text())
         self.w, self.h = self.m['corridor_clear_width'], self.m['corridor_clear_height']
         self.length = self.e['corridor_length']
         self.stage = Usd.Stage.CreateNew(str(filename))
@@ -86,8 +89,9 @@ class Builder:
 
     def make_materials(self):
         textures = {'FloorCream': 'terrazzo_cream', 'FloorGreen': 'terrazzo_green', 'Ceiling': 'ceiling',
-                    'Directory': 'directory', 'QuietSign': 'quiet', 'Brick': 'brick', 'BuildingSign': 'building_sign'}
-        for name in [*PALETTE, 'Directory', 'QuietSign']:
+                    'Directory': 'directory', 'QuietSign': 'quiet', 'Brick': 'brick', 'BuildingSign': 'building_sign',
+                    'FloorMarker': 'floor_marker_3'}
+        for name in [*PALETTE, 'Directory', 'QuietSign', 'FloorMarker']:
             color, rough, metallic = PALETTE.get(name, ((.8, .8, .8), .7, 0))
             path = '/World/Looks/' + name
             mat = UsdShade.Material.Define(self.stage, path)
@@ -251,7 +255,6 @@ class Builder:
         for s in [-1, 1]:
             self.box(p+f'/Jamb_{s+1}', (s*(width/2+.0225), .04, 1.15), (.045, .13, 2.3), 'DoorWhite')
         self.box(p+'/Header', (0, .04, 2.28), (width+.09, .13, .04), 'DoorWhite')
-        self.box(p+'/Transom', (0, .07, 2.20), (width, .05, .16), 'DarkGlass')
         for i, sign in enumerate([-1, 1]):
             cx, lw = sign*width/4, width/2-.006
             glass_width = lw*.38 if style!='glazed' else lw*.78
@@ -282,14 +285,14 @@ class Builder:
         self.box(p+'/CardReader', (-width/2-.12, -.016, 1.1), (.07, .035, .13), 'Skirting', False)
         self.box(p+'/Beacon', (-width/2-.05, -.04, 2.34), (.045, .045, .11), 'Blue', False)
 
-    def downlight(self, name, x, y=0, z=None, intensity=5000):
+    def downlight(self, name, x, y=0, z=None, intensity=None):
         z = self.h if z is None else z
         p = '/World/Lights/' + name
         self.cylinder(p+'_Trim', (x, y, z-.015), .105, .025, 'DoorWhite', False)
         self.cylinder(p+'_Lens', (x, y, z-.029), .086, .002, 'CoolGlow', False)
         disk = UsdLux.DiskLight.Define(self.stage, p)
         disk.CreateRadiusAttr(.085)
-        disk.CreateIntensityAttr(intensity)
+        disk.CreateIntensityAttr(self.lighting['corridor_intensity'] if intensity is None else intensity)
         disk.CreateNormalizeAttr(True)
         disk.CreateColorAttr(Gf.Vec3f(.94, .97, 1))
         disk.AddTranslateOp().Set(Gf.Vec3d(x, y, z-.036))
@@ -312,7 +315,7 @@ class Builder:
         end = entry+n*tread
         p = '/World/Stairs/' + stair['name']
         prim = self.group(p, (stair['x'], stair['side']*self.w/2, 0), stair['yaw'])
-        prim.CreateAttribute('e10:geometryEvidence', Sdf.ValueTypeNames.String).Set('Visible first flight; downward completion and terminal landings inferred; no full adjacent floors.')
+        prim.CreateAttribute('e10:geometryEvidence', Sdf.ValueTypeNames.String).Set('Video-based flights repeated on six levels, connected through inferred half-level landings.')
         self.box(p+'/EntryLanding', (0, entry/2, -.08), (bay, entry, .16), 'Stone')
         for name, sign, cx in [('Up', 1, -(fw+gap)/2), ('Down', -1, (fw+gap)/2)]:
             q = p+'/'+name
@@ -338,22 +341,17 @@ class Builder:
             b = (rail_x, end-tread/2, sign*n*rise+rh)
             self.rod(q+'/Handrail', a, b, .025)
             self.rod(q+'/Midrail', (a[0], a[1], a[2]-.45), (b[0], b[1], b[2]-.45), .011)
-            self.rod(q+'/LandingRail', b, (rail_x, end+land-.05, sign*n*rise+rh), .025)
-            self.rod(q+'/LandingPost', (rail_x, end+land-.05, sign*n*rise), (rail_x, end+land-.05, sign*n*rise+rh), .018)
-        low, high = -n*rise-.16, n*rise+self.h
+            self.rod(q+'/EndPost', (rail_x, end-tread/2, sign*n*rise), b, .018)
+        # One wall segment per level joins its neighbours without overlapping.
+        low, high = -n*rise, n*rise
         t = self.e['wall_thickness']
         for sign in [-1, 1]:
             self.box(p+f'/SideWall_{sign+1}', (sign*(bay/2+t/2), (end+land)/2, (low+high)/2), (t, end+land, high-low), 'StairGreen')
         self.box(p+'/BackWall', (0, end+land+t/2, (low+high)/2), (bay+2*t, t, high-low), 'StairGreen')
-        # Central wall only behind the opening, preserving the observed down-flight void.
-        self.box(p+'/Divider', (0, (entry+end+land)/2, n*rise/2+self.h/2), (gap*.55, end+land-entry, n*rise+self.h), 'StairGreen')
-        roof = '/World/Ceilings/Stair_' + stair['name']
-        self.group(roof, (stair['x'], stair['side']*self.w/2, 0), stair['yaw'])
-        self.box(roof+'/Roof', (0, (end+land)/2, high+.08), (bay+2*t, end+land, .16), 'Ceiling')
-        # No ceiling at corridor height extends across the ascending stair flight.
-        for sign in [-1, 1]:
-            self.downlight('Stair_'+stair['name']+'_'+str(sign+1), stair['x']+sign*(fw+gap)/2,
-                           stair['side']*(self.w/2+entry+1.5), high, 1800)
+        # Stop the divider before the landing so the next floor's return flight
+        # is reachable. The bridge closes the 18 cm gap between the flights.
+        self.box(p+'/Divider', (0, (entry+end)/2, (low+high)/2), (gap*.55, end-entry, high-low), 'StairGreen')
+        self.box(p+'/HalfLandingBridge', (0, end+land/2, n*rise-.08), (gap, land, .16), 'Stone')
         self.box(p+'/ExitSign', (0, -.018, 2.405), (.30, .035, .13), 'Exit', False)
         self.box(p+'/ExitArrow', (0, -.038, 2.405), (.19, .008, .02), 'White', False)
 
@@ -426,7 +424,7 @@ class Builder:
             self.box('/World/Fixtures/AlcoveFrame_'+str(round(x*100)), (x, y0+.05, 1.7), (.05, .08, 1.6), 'Metal')
         for z in [.9, 2.45]:
             self.box('/World/Fixtures/AlcoveFrameZ_'+str(int(z*100)), ((a+b)/2, y0+.05, z), (b-a, .08, .06), 'Metal')
-        self.downlight('Alcove', (a+b)/2, (y0+y1)/2, intensity=2600)
+        self.downlight('Alcove', (a+b)/2, (y0+y1)/2, intensity=self.lighting['alcove_intensity'])
         for i, (x, y, h) in enumerate([(a+.4,y0+.45,1.7),(a+1,y0+.55,1.45),(a+1.65,y0+.5,1.85),(b-.4,y0+1.0,1.4),(a+.9,y0+1.2,.65),(a+.3,y1-.5,.65)]):
             self.plant(f'Plant_{i:02}', x, y, h, 100+i)
         p = '/World/Fixtures/WaterDispenser'
@@ -447,6 +445,13 @@ class Builder:
         self.box(p+'/DisplayLight', (0, -.145, 2.19), (.018, .01, .05), 'Red', False)
         for i, xx in enumerate([-.9, .9]):
             self.box(p+f'/Sconce_{i}', (xx, -.18, 1.9), (.13, .12, .32), 'WarmGlow', False)
+        # Use the free wall beside the elevator, clear of its sconces and buttons.
+        marker = p+'/FloorMarker'
+        prim = self.group(marker, (1.26, -.076, 1.62))
+        prim.CreateAttribute('e10:floorNumber', Sdf.ValueTypeNames.Int).Set(3)
+        prim.CreateAttribute('e10:label', Sdf.ValueTypeNames.String).Set('3F / 3층')
+        self.box(marker+'/Backing', (0, 0, 0), (.50, .022, .70), 'Aluminum', False)
+        self.poster(marker+'/Graphic', (0, -.012, 0), .46, .66, 'FloorMarker')
         glow = UsdLux.RectLight.Define(self.stage, p+'/CoveLight')
         glow.CreateWidthAttr(2.4)
         glow.CreateHeightAttr(.06)
@@ -472,7 +477,24 @@ class Builder:
             'ExteriorFront': ((-14, -44, 12), (17, -.7, 3.5), 30),
             'ExteriorRear': ((53, 38, 25), (20, 0, 4), 30),
             'DoorRecess': ((6.1, -.45, 1.60), (5.4, 1.05, 1.36), 28),
+            'RoomFront': ((9.0, -1.8, 1.55), (10.4, -6.8, 1.4), 18),
+            'RoomRear': ((9.0, 1.8, 1.55), (10.4, 6.8, 1.4), 18),
+            'AllFloors': ((52, -48, 25), (19, 0, 4.2), 26),
         }
+        exterior = self.exterior_manifest
+        geometry = exterior['source']['estimated_geometry']
+        for level in range(1, geometry['levels']+1):
+            z = exterior['ground_z']+(level-1)*geometry['floor_to_floor']
+            views[f'LightingLevel{level}'] = ((13.4, -2.0, z+1.5), (14.0, -7.65, z+1.35), 24)
+            views[f'CorridorLevel{level}'] = ((4.4, 0, z+1.58), (18, 0, z+1.43), 18)
+            elevator_x = (self.e['alcove_x_range'][1]+self.length)/2
+            views[f'ElevatorLevel{level}'] = ((elevator_x, .90, z+1.62), (elevator_x, -1.05, z+1.50), 20)
+        transforms = UsdGeom.XformCache()
+        for stair in self.c['stairs']:
+            transform = transforms.GetLocalToWorldTransform(self.stage.GetPrimAtPath('/World/Stairs/'+stair['name']))
+            eye = transform.Transform(Gf.Vec3d((self.m['stair_flight_width']+self.e['stair_center_gap'])/2, .55, 1.55))
+            target = transform.Transform(Gf.Vec3d((self.m['stair_flight_width']+self.e['stair_center_gap'])/2, 5.1, -1.45))
+            views['StairDown'+stair['name']] = (tuple(eye), tuple(target), 18)
         for name, item in self.c['spawn_points'].items():
             prim = self.group('/World/SpawnPoints/'+name, item['position'], item['yaw_deg'])
             prim.CreateAttribute('e10:robotBaseHeight', Sdf.ValueTypeNames.Double).Set(.55)
@@ -505,7 +527,9 @@ class Builder:
         self.box('/World/Fixtures/FireCabinet', (8.4, self.w/2-.025, .92), (.45, .035, 1.16), 'Metal', False)
         self.rod('/World/Fixtures/FireAlarm', (8.4, self.w/2-.04, 1.37), (8.4, self.w/2-.08, 1.37), .055, 'Red', False)
         self.exterior_manifest = build_exterior(self)
+        self.lighting_manifest = build_lighting(self)
         views = self.review_views()
+        self.levels_manifest = build_levels(self)
         self.stage.GetRootLayer().Save()
         return views
 
@@ -524,6 +548,7 @@ def main():
     stage.GetRootLayer().subLayerPaths = ['cbnu_e10.usda']
     UsdGeom.Imageable(stage.OverridePrim('/World/Ceilings')).CreateVisibilityAttr('invisible')
     UsdGeom.Imageable(stage.OverridePrim('/World/Exterior')).CreateVisibilityAttr('invisible')
+    UsdGeom.Imageable(stage.OverridePrim('/World/Levels')).CreateVisibilityAttr('invisible')
     stage.GetRootLayer().customLayerData = {'purpose': 'Inspection only; ceiling collision remains active. Use cbnu_e10.usda for simulation.'}
     stage.GetRootLayer().Save()
     manifest = {
@@ -536,6 +561,8 @@ def main():
         'camera_prims': sum(p.IsA(UsdGeom.Camera) for p in builder.stage.Traverse()),
         'containment_adjustments': builder.containment_adjustments,
         'exterior': builder.exterior_manifest,
+        'lighting': builder.lighting_manifest,
+        'levels': builder.levels_manifest,
         'limitations': config['limitations'],
     }
     (OUT/'build_manifest.json').write_text(json.dumps(manifest, indent=2)+'\n')

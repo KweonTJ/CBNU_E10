@@ -1,0 +1,72 @@
+{
+  "success": true,
+  "stage_sha256": "74c2ad0a30cac081cac0cfd17ecb8170760201be875874e30ce1693300168142",
+  "markers": [
+    {
+      "level": 1,
+      "label": "1F / 1층",
+      "position_m": [
+        35.339999999999996,
+        -0.9739999999999999,
+        -6.7
+      ],
+      "texture": "../../assets/textures/floor_marker_1.png",
+      "passed": true
+    },
+    {
+      "level": 2,
+      "label": "2F / 2층",
+      "position_m": [
+        35.339999999999996,
+        -0.9739999999999999,
+        -2.54
+      ],
+      "texture": "../../assets/textures/floor_marker_2.png",
+      "passed": true
+    },
+    {
+      "level": 3,
+      "label": "3F / 3층",
+      "position_m": [
+        35.339999999999996,
+        -0.9739999999999999,
+        1.62
+      ],
+      "texture": "../../assets/textures/floor_marker_3.png",
+      "passed": true
+    },
+    {
+      "level": 4,
+      "label": "4F / 4층",
+      "position_m": [
+        35.339999999999996,
+        -0.9739999999999999,
+        5.78
+      ],
+      "texture": "../../assets/textures/floor_marker_4.png",
+      "passed": true
+    },
+    {
+      "level": 5,
+      "label": "5F / 5층",
+      "position_m": [
+        35.339999999999996,
+        -0.9739999999999999,
+        9.940000000000001
+      ],
+      "texture": "../../assets/textures/floor_marker_5.png",
+      "passed": true
+    },
+    {
+      "level": 6,
+      "label": "6F / 6층",
+      "position_m": [
+        35.339999999999996,
+        -0.9739999999999999,
+        14.100000000000001
+      ],
+      "texture": "../../assets/textures/floor_marker_6.png",
+      "passed": true
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "success": true,
+  "state": "complete",
+  "pid": 41260,
+  "started_utc": "2026-11-08T17:12:11.519819+00:00",
+  "stage_sha256": "74c2ad0a30cac081cac0cfd17ecb8170760201be875874e30ce1693300168142",
+  "renders": [
+    "ElevatorLevel1",
+    "ElevatorLevel2",
+    "ElevatorLevel3",
+    "ElevatorLevel4",
+    "ElevatorLevel5",
+    "ElevatorLevel6",
+    "FarLobby"
+  ],
+  "physics_checks": [],
+  "mode": "render_only",
+  "finished_utc": "2026-11-08T17:12:19.328369+00:00"
+}

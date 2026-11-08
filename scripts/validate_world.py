@@ -4,7 +4,7 @@ import hashlib
 import json
 import math
 from pathlib import Path
-from pxr import Gf, Usd, UsdGeom, UsdPhysics, UsdShade, UsdUtils
+from pxr import Gf, Usd, UsdGeom, UsdLux, UsdPhysics, UsdShade, UsdUtils
 from inspect_containment import inspect_fixtures
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -14,6 +14,8 @@ WORLD = ROOT/'worlds/cbnu_e10/cbnu_e10.usda'
 def main():
     stage = Usd.Stage.Open(str(WORLD))
     config = json.loads((WORLD.parent/'config/layout.json').read_text())
+    manifest = json.loads((WORLD.parent/'build_manifest.json').read_text())
+    floors = manifest['levels']['floors']
     checks = []
 
     def check(label, condition, details=None):
@@ -101,9 +103,11 @@ def main():
     # Confirm stair centerlines have 2 m headroom without a low slab crossing them.
     headroom_blockers = set()
     xf = UsdGeom.XformCache()
-    for s in config['stairs']:
-        transform = xf.GetLocalToWorldTransform(stage.GetPrimAtPath('/World/Stairs/'+s['name']))
+    for root, s in [(item['root'], s) for item in floors.values() for s in config['stairs']]:
+        transform = xf.GetLocalToWorldTransform(stage.GetPrimAtPath(root+'/Stairs/'+s['name']))
         for direction, sign, cx in [('Up', 1, -(m['stair_flight_width']+e['stair_center_gap'])/2), ('Down', -1, (m['stair_flight_width']+e['stair_center_gap'])/2)]:
+            if not stage.GetPrimAtPath(root+'/Stairs/'+s['name']+'/'+direction).IsActive():
+                continue
             for i in range(1, e['stair_visible_risers']+1):
                 y = e['stair_entry_landing']+(i-.5)*e['stair_tread']
                 z = sign*i*m['stair_riser']
@@ -123,9 +127,10 @@ def main():
     check('Overview composition contains no cameras', not any(p.IsA(UsdGeom.Camera) for p in overview.Traverse()))
     containment = inspect_fixtures(stage, config)
     check('Every fixture stays inside corridor or alcove walls', containment['success'], containment)
-    recessed_windows, blocked_apertures = [], []
-    for d in config['doors']:
-        door = stage.GetPrimAtPath('/World/Doors/'+d['name'])
+    recessed_windows, blocked_apertures, door_top_gaps = [], [], []
+    for door in [stage.GetPrimAtPath(item['root']+'/Doors/'+d['name']) for item in floors.values() for d in config['doors']]:
+        header = stage.GetPrimAtPath(str(door.GetPath())+'/Header')
+        header_bottom = cache.ComputeRelativeBound(header, door).ComputeAlignedRange().GetMin()[2]
         for index in [0, 1]:
             glass = stage.GetPrimAtPath(str(door.GetPath())+f'/Glass_{index}')
             glass_box = cache.ComputeRelativeBound(glass, door).ComputeAlignedRange()
@@ -136,6 +141,9 @@ def main():
                 depths.append(cache.ComputeRelativeBound(frame, door).ComputeAlignedRange().GetMin()[1]-front)
             cx, _, cz = glass_box.GetMidpoint()
             leaf = stage.GetPrimAtPath(str(door.GetPath())+f'/Leaf_{index}')
+            leaf_top = cache.ComputeRelativeBound(leaf, door).ComputeAlignedRange().GetMax()[2]
+            if abs(header_bottom-leaf_top)>1e-5:
+                door_top_gaps.append(str(leaf.GetPath()))
             blockers = []
             for solid in leaf.GetChildren():
                 local = cache.ComputeRelativeBound(solid, door).ComputeAlignedRange()
@@ -144,13 +152,63 @@ def main():
             blocked_apertures.extend(blockers)
             if min(depths) >= .009 and glass_box.GetMax()[1] < .035+.055/2:
                 recessed_windows.append(str(glass.GetPath()))
-    check('All 32 door windows and their frames are recessed into the leaf', len(recessed_windows)==2*len(config['doors']), {'window_count':len(recessed_windows), 'glass_recess_m':.0355, 'frame_recess_m':.0095})
+    check('All door windows and their frames are recessed into the leaf', len(recessed_windows)==2*len(config['doors'])*len(floors), {'window_count':len(recessed_windows), 'glass_recess_m':.0355, 'frame_recess_m':.0095})
     check('Door window apertures contain no solid door backing', not blocked_apertures, blocked_apertures)
+    check('Every door leaf reaches the header with no top gap', not door_top_gaps, door_top_gaps)
     exterior_config = json.loads((WORLD.parent/'config/exterior.json').read_text())
     exterior_dims = exterior_config['estimated_geometry']
     check('Photo-referenced exterior has six levels', exterior_dims['levels']==6 and all(stage.GetPrimAtPath(f'/World/Exterior/Facades/MainFront/Level_{i}') for i in range(1,7)))
     envelope = bounds('/World/Exterior/RoomWings/GroundFloorSlab')
     check('Unified exterior foundation surrounds corridor and stair bays', envelope.GetSize()[1]>15 and envelope.GetMin()[0]<0 and envelope.GetMax()[0]>config['estimated']['corridor_length'])
+    lighting = manifest['lighting']
+    transforms = UsdGeom.XformCache()
+    level_lights = {}
+    hidden_lights, embedded_lights = [], []
+    for prim in stage.Traverse():
+        if not prim.HasAPI(UsdLux.LightAPI):
+            continue
+        if UsdGeom.Imageable(prim).ComputeVisibility()=='invisible' or UsdLux.LightAPI(prim).GetIntensityAttr().Get()<=0:
+            hidden_lights.append(str(prim.GetPath()))
+        path = str(prim.GetPath())
+        if '/Lights/Rooms/' in path or '/Lights/StairSupplements/' in path:
+            pos = transforms.GetLocalToWorldTransform(prim).Transform(Gf.Vec3d(0))
+            if any(contains(path, box, pos) for path, box in ranges):
+                embedded_lights.append(path)
+        if '/Lights/Rooms/' in path:
+            key = path.split('/')[3] if path.startswith('/World/Levels/') else 'Level_3'
+            level_lights[key] = level_lights.get(key, 0)+1
+    check('Every level has active local lights', len(level_lights)==exterior_dims['levels'] and all(n>0 for n in level_lights.values()) and not hidden_lights, level_lights)
+    check('New lights are outside solid walls, floors and ceilings', not embedded_lights, embedded_lights)
+    room_coverage = []
+    for room in lighting['rooms']:
+        left, right, front, rear = room['bounds_xy']
+        points = [transforms.GetLocalToWorldTransform(stage.GetPrimAtPath(path)).Transform(Gf.Vec3d(0)) for path in room['lights']]
+        room_coverage.append(bool(points) and all(left<p[0]<right and front<p[1]<rear and 2.0<p[2]-room['floor_z']<2.5 for p in points))
+    check('Every enclosed room has its own ceiling lights', bool(room_coverage) and all(room_coverage), {'rooms':len(room_coverage)})
+    for level, item in floors.items():
+        root, z = item['root'], item['floor_z']
+        slab = bounds(root+'/Floor/Corridor/Slab')
+        roof = bounds(root+'/Ceilings/Corridor/Slab')
+        doors = stage.GetPrimAtPath(root+'/Doors').GetChildren()
+        check('Level '+level+' repeats the measured corridor and all doors',
+              close(slab.GetMax()[2], z) and close(slab.GetSize()[1], 2.1) and close(roof.GetMin()[2]-z, 2.5) and len(doors)==len(config['doors']))
+    blocked_connections = []
+    for item in manifest['levels']['stair_connections']:
+        low = item['lower_path']
+        upper = item['upper_path']
+        z = item['landing_z']
+        bridge = bounds(low+'/HalfLandingBridge')
+        heights = [bounds(low+'/Up/TerminalLanding').GetMax()[2], bridge.GetMax()[2], bounds(upper+'/Down/TerminalLanding').GetMax()[2]]
+        check(f'Half landing {item["lower_level"]}-{item["upper_level"]} {item["stair"]} is continuous', all(close(height,z) for height in heights))
+        transform = transforms.GetLocalToWorldTransform(stage.GetPrimAtPath(low))
+        along = e['stair_entry_landing']+e['stair_visible_risers']*e['stair_tread']+e['stair_terminal_landing']/2
+        for x in [-.84, -.08, 0, .08, .84]:
+            for height in [.15, 1.0, 2.0]:
+                point = transform.Transform(Gf.Vec3d(x, along, e['stair_visible_risers']*m['stair_riser']+height))
+                for path, box in ranges:
+                    if contains(path, box, point):
+                        blocked_connections.append(path)
+    check('All ten half-landings have clear crossing space and 2 m headroom', not blocked_connections, sorted(set(blocked_connections)))
     report = {'success': all(x['passed'] for x in checks), 'stage_sha256': hashlib.sha256(WORLD.read_bytes()).hexdigest(), 'check_count': len(checks), 'colliders': len(colliders), 'checks': checks}
     out = ROOT/'outputs/validation'
     out.mkdir(parents=True, exist_ok=True)

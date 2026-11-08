@@ -1,0 +1,17 @@
+{
+  "success": true,
+  "before": {
+    "stage_sha256": "fec3a153cdf1544912344f105a8a241156ec56d94628a3fff989d215dcd3be08",
+    "colliders": 5116,
+    "physics_sha256": "141d58f5c926b0f7ee6f7c3e74fdabcaa1b2e9931ac3cc1cf37adaa13e5d382f"
+  },
+  "after": {
+    "stage_sha256": "74c2ad0a30cac081cac0cfd17ecb8170760201be875874e30ce1693300168142",
+    "colliders": 5116,
+    "physics_sha256": "141d58f5c926b0f7ee6f7c3e74fdabcaa1b2e9931ac3cc1cf37adaa13e5d382f"
+  },
+  "comparison_scope": "All collider types, schemas, composed attributes, world transforms, bound physics materials and physics scene attributes.",
+  "prior_physics_passed": true,
+  "prior_physics_checks": 84,
+  "physics_rerun": false
+}

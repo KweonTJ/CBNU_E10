@@ -1,9 +1,9 @@
 {
   "world": "worlds/cbnu_e10/cbnu_e10.usda",
-  "config_sha256": "104eb57915f4d2534e52621729c854c5cfc191d094df11daf034db06da95e060",
-  "stage_sha256": "2b224d16731f8515a00e488d5842d4098f2b1b38b1e23e1fbe3aba4724b3851f",
-  "prims": 5728,
-  "collision_prims": 2598,
+  "config_sha256": "7fe66b0c128c882bcadce2cafe5231a803b7058a43cfb3d325fa2711bd45dd64",
+  "stage_sha256": "74c2ad0a30cac081cac0cfd17ecb8170760201be875874e30ce1693300168142",
+  "prims": 13990,
+  "collision_prims": 5116,
   "views": {
     "Corridor": {
       "eye": [
@@ -121,6 +121,305 @@
         1.36
       ],
       "focal_length": 28
+    },
+    "RoomFront": {
+      "eye": [
+        9.0,
+        -1.8,
+        1.55
+      ],
+      "target": [
+        10.4,
+        -6.8,
+        1.4
+      ],
+      "focal_length": 18
+    },
+    "RoomRear": {
+      "eye": [
+        9.0,
+        1.8,
+        1.55
+      ],
+      "target": [
+        10.4,
+        6.8,
+        1.4
+      ],
+      "focal_length": 18
+    },
+    "AllFloors": {
+      "eye": [
+        52,
+        -48,
+        25
+      ],
+      "target": [
+        19,
+        0,
+        4.2
+      ],
+      "focal_length": 26
+    },
+    "LightingLevel1": {
+      "eye": [
+        13.4,
+        -2.0,
+        -6.82
+      ],
+      "target": [
+        14.0,
+        -7.65,
+        -6.970000000000001
+      ],
+      "focal_length": 24
+    },
+    "CorridorLevel1": {
+      "eye": [
+        4.4,
+        0,
+        -6.74
+      ],
+      "target": [
+        18,
+        0,
+        -6.890000000000001
+      ],
+      "focal_length": 18
+    },
+    "ElevatorLevel1": {
+      "eye": [
+        36.599999999999994,
+        0.9,
+        -6.7
+      ],
+      "target": [
+        36.599999999999994,
+        -1.05,
+        -6.82
+      ],
+      "focal_length": 20
+    },
+    "LightingLevel2": {
+      "eye": [
+        13.4,
+        -2.0,
+        -2.66
+      ],
+      "target": [
+        14.0,
+        -7.65,
+        -2.81
+      ],
+      "focal_length": 24
+    },
+    "CorridorLevel2": {
+      "eye": [
+        4.4,
+        0,
+        -2.58
+      ],
+      "target": [
+        18,
+        0,
+        -2.7300000000000004
+      ],
+      "focal_length": 18
+    },
+    "ElevatorLevel2": {
+      "eye": [
+        36.599999999999994,
+        0.9,
+        -2.54
+      ],
+      "target": [
+        36.599999999999994,
+        -1.05,
+        -2.66
+      ],
+      "focal_length": 20
+    },
+    "LightingLevel3": {
+      "eye": [
+        13.4,
+        -2.0,
+        1.5
+      ],
+      "target": [
+        14.0,
+        -7.65,
+        1.35
+      ],
+      "focal_length": 24
+    },
+    "CorridorLevel3": {
+      "eye": [
+        4.4,
+        0,
+        1.58
+      ],
+      "target": [
+        18,
+        0,
+        1.43
+      ],
+      "focal_length": 18
+    },
+    "ElevatorLevel3": {
+      "eye": [
+        36.599999999999994,
+        0.9,
+        1.62
+      ],
+      "target": [
+        36.599999999999994,
+        -1.05,
+        1.5
+      ],
+      "focal_length": 20
+    },
+    "LightingLevel4": {
+      "eye": [
+        13.4,
+        -2.0,
+        5.66
+      ],
+      "target": [
+        14.0,
+        -7.65,
+        5.51
+      ],
+      "focal_length": 24
+    },
+    "CorridorLevel4": {
+      "eye": [
+        4.4,
+        0,
+        5.74
+      ],
+      "target": [
+        18,
+        0,
+        5.59
+      ],
+      "focal_length": 18
+    },
+    "ElevatorLevel4": {
+      "eye": [
+        36.599999999999994,
+        0.9,
+        5.78
+      ],
+      "target": [
+        36.599999999999994,
+        -1.05,
+        5.66
+      ],
+      "focal_length": 20
+    },
+    "LightingLevel5": {
+      "eye": [
+        13.4,
+        -2.0,
+        9.82
+      ],
+      "target": [
+        14.0,
+        -7.65,
+        9.67
+      ],
+      "focal_length": 24
+    },
+    "CorridorLevel5": {
+      "eye": [
+        4.4,
+        0,
+        9.9
+      ],
+      "target": [
+        18,
+        0,
+        9.75
+      ],
+      "focal_length": 18
+    },
+    "ElevatorLevel5": {
+      "eye": [
+        36.599999999999994,
+        0.9,
+        9.940000000000001
+      ],
+      "target": [
+        36.599999999999994,
+        -1.05,
+        9.82
+      ],
+      "focal_length": 20
+    },
+    "LightingLevel6": {
+      "eye": [
+        13.4,
+        -2.0,
+        13.98
+      ],
+      "target": [
+        14.0,
+        -7.65,
+        13.83
+      ],
+      "focal_length": 24
+    },
+    "CorridorLevel6": {
+      "eye": [
+        4.4,
+        0,
+        14.06
+      ],
+      "target": [
+        18,
+        0,
+        13.91
+      ],
+      "focal_length": 18
+    },
+    "ElevatorLevel6": {
+      "eye": [
+        36.599999999999994,
+        0.9,
+        14.100000000000001
+      ],
+      "target": [
+        36.599999999999994,
+        -1.05,
+        13.98
+      ],
+      "focal_length": 20
+    },
+    "StairDownStart": {
+      "eye": [
+        1.5599999999999998,
+        -1.6,
+        1.55
+      ],
+      "target": [
+        1.5599999999999992,
+        -6.1499999999999995,
+        -1.45
+      ],
+      "focal_length": 18
+    },
+    "StairDownFar": {
+      "eye": [
+        36.84,
+        1.6,
+        1.55
+      ],
+      "target": [
+        36.84,
+        6.1499999999999995,
+        -1.45
+      ],
+      "focal_length": 18
     }
   },
   "camera_prims": 0,
@@ -187,8 +486,8 @@
       "limitations": [
         "Dimensions and hidden rear facade are approximate; the photo establishes appearance, not survey coordinates.",
         "Floor-to-floor height 4.16 m is a modeling assumption consistent with two 13 x 0.16 m flights, not a measured building height.",
-        "Only the video-referenced third-floor corridor and existing stair flights are traversable interior reconstruction.",
-        "Other floors are exterior shell geometry; no interior rooms, full inter-floor stairs or operating lifts are claimed.",
+        "All six interiors repeat the third-floor layout at the user's request; other floors are not independently surveyed.",
+        "Stair flights connect across intermediate landings; ground and top floor ends are closed. Lifts remain static.",
         "The adjacent blue-glass E9 building, cars, street and street furniture are not copied."
       ]
     },
@@ -196,16 +495,1665 @@
     "roof_z": 16.64,
     "surveyed_corridor_z": 0,
     "traversable_interior_levels": [
-      3
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
     ],
     "exterior_levels": 6
+  },
+  "lighting": {
+    "floor_panels": {
+      "1": 30,
+      "2": 30,
+      "3": 30,
+      "4": 30,
+      "5": 30,
+      "6": 30
+    },
+    "rooms": [
+      {
+        "name": "Floor_0_0_Room_0",
+        "bounds_xy": [
+          1.1920928910669204e-08,
+          0.649999988079071,
+          -7.519999971389771,
+          -1.2100000286102297
+        ],
+        "lights": [
+          "/World/Levels/Level_1/Lights/Rooms/Level_3/Floor_0_0_Room_0/Panel_0/Light"
+        ],
+        "level": 1,
+        "floor_z": -8.32
+      },
+      {
+        "name": "Floor_0_1_Room_0",
+        "bounds_xy": [
+          4.150000190734865,
+          7.5,
+          -7.519999971389771,
+          -1.2100000286102297
+        ],
+        "lights": [
+          "/World/Levels/Level_1/Lights/Rooms/Level_3/Floor_0_1_Room_0/Panel_0/Light"
+        ],
+        "level": 1,
+        "floor_z": -8.32
+      },
+      {
+        "name": "Floor_0_1_Room_1",
+        "bounds_xy": [
+          7.5,
+          11.5,
+          -7.519999971389771,
+          -1.2100000286102297
+        ],
+        "lights": [
+          "/World/Levels/Level_1/Lights/Rooms/Level_3/Floor_0_1_Room_1/Panel_0/Light",
+          "/World/Levels/Level_1/Lights/Rooms/Level_3/Floor_0_1_Room_1/Panel_1/Light"
+        ],
+        "level": 1,
+        "floor_z": -8.32
+      },
+      {
+        "name": "Floor_0_1_Room_2",
+        "bounds_xy": [
+          11.5,
+          15.5,
+          -7.519999971389771,
+          -1.2100000286102297
+        ],
+        "lights": [
+          "/World/Levels/Level_1/Lights/Rooms/Level_3/Floor_0_1_Room_2/Panel_0/Light",
+          "/World/Levels/Level_1/Lights/Rooms/Level_3/Floor_0_1_Room_2/Panel_1/Light"
+        ],
+        "level": 1,
+        "floor_z": -8.32
+      },
+      {
+        "name": "Floor_0_1_Room_3",
+        "bounds_xy": [
+          15.5,
+          19.5,
+          -7.519999971389771,
+          -1.2100000286102297
+        ],
+        "lights": [
+          "/World/Levels/Level_1/Lights/Rooms/Level_3/Floor_0_1_Room_3/Panel_0/Light",
+          "/World/Levels/Level_1/Lights/Rooms/Level_3/Floor_0_1_Room_3/Panel_1/Light"
+        ],
+        "level": 1,
+        "floor_z": -8.32
+      },
+      {
+        "name": "Floor_0_1_Room_4",
+        "bounds_xy": [
+          19.5,
+          23.5,
+          -7.519999971389771,
+          -1.2100000286102297
+        ],
+        "lights": [
+          "/World/Levels/Level_1/Lights/Rooms/Level_3/Floor_0_1_Room_4/Panel_0/Light",
+          "/World/Levels/Level_1/Lights/Rooms/Level_3/Floor_0_1_Room_4/Panel_1/Light"
+        ],
+        "level": 1,
+        "floor_z": -8.32
+      },
+      {
+        "name": "Floor_0_1_Room_5",
+        "bounds_xy": [
+          23.5,
+          27.5,
+          -7.519999971389771,
+          -1.2100000286102297
+        ],
+        "lights": [
+          "/World/Levels/Level_1/Lights/Rooms/Level_3/Floor_0_1_Room_5/Panel_0/Light",
+          "/World/Levels/Level_1/Lights/Rooms/Level_3/Floor_0_1_Room_5/Panel_1/Light"
+        ],
+        "level": 1,
+        "floor_z": -8.32
+      },
+      {
+        "name": "Floor_0_1_Room_6",
+        "bounds_xy": [
+          27.5,
+          31.799999809265138,
+          -7.519999971389771,
+          -1.2100000286102297
+        ],
+        "lights": [
+          "/World/Levels/Level_1/Lights/Rooms/Level_3/Floor_0_1_Room_6/Panel_0/Light",
+          "/World/Levels/Level_1/Lights/Rooms/Level_3/Floor_0_1_Room_6/Panel_1/Light"
+        ],
+        "level": 1,
+        "floor_z": -8.32
+      },
+      {
+        "name": "Floor_0_2_Room_0",
+        "bounds_xy": [
+          34.80000004768371,
+          38.39999995231628,
+          -7.519999971389771,
+          -1.2100000286102297
+        ],
+        "lights": [
+          "/World/Levels/Level_1/Lights/Rooms/Level_3/Floor_0_2_Room_0/Panel_0/Light"
+        ],
+        "level": 1,
+        "floor_z": -8.32
+      },
+      {
+        "name": "Floor_2_0_Room_0",
+        "bounds_xy": [
+          0.0,
+          7.5,
+          1.2099999332427984,
+          7.320000066757203
+        ],
+        "lights": [
+          "/World/Levels/Level_1/Lights/Rooms/Level_3/Floor_2_0_Room_0/Panel_0/Light",
+          "/World/Levels/Level_1/Lights/Rooms/Level_3/Floor_2_0_Room_0/Panel_1/Light"
+        ],
+        "level": 1,
+        "floor_z": -8.32
+      },
+      {
+        "name": "Floor_2_0_Room_1",
+        "bounds_xy": [
+          7.5,
+          11.5,
+          1.2099999332427984,
+          7.320000066757203
+        ],
+        "lights": [
+          "/World/Levels/Level_1/Lights/Rooms/Level_3/Floor_2_0_Room_1/Panel_0/Light",
+          "/World/Levels/Level_1/Lights/Rooms/Level_3/Floor_2_0_Room_1/Panel_1/Light"
+        ],
+        "level": 1,
+        "floor_z": -8.32
+      },
+      {
+        "name": "Floor_2_0_Room_2",
+        "bounds_xy": [
+          11.5,
+          15.5,
+          1.2099999332427984,
+          7.320000066757203
+        ],
+        "lights": [
+          "/World/Levels/Level_1/Lights/Rooms/Level_3/Floor_2_0_Room_2/Panel_0/Light",
+          "/World/Levels/Level_1/Lights/Rooms/Level_3/Floor_2_0_Room_2/Panel_1/Light"
+        ],
+        "level": 1,
+        "floor_z": -8.32
+      },
+      {
+        "name": "Floor_2_0_Room_3",
+        "bounds_xy": [
+          15.5,
+          19.5,
+          1.2099999332427984,
+          7.320000066757203
+        ],
+        "lights": [
+          "/World/Levels/Level_1/Lights/Rooms/Level_3/Floor_2_0_Room_3/Panel_0/Light",
+          "/World/Levels/Level_1/Lights/Rooms/Level_3/Floor_2_0_Room_3/Panel_1/Light"
+        ],
+        "level": 1,
+        "floor_z": -8.32
+      },
+      {
+        "name": "Floor_2_0_Room_4",
+        "bounds_xy": [
+          19.5,
+          23.5,
+          1.2099999332427984,
+          7.320000066757203
+        ],
+        "lights": [
+          "/World/Levels/Level_1/Lights/Rooms/Level_3/Floor_2_0_Room_4/Panel_0/Light",
+          "/World/Levels/Level_1/Lights/Rooms/Level_3/Floor_2_0_Room_4/Panel_1/Light"
+        ],
+        "level": 1,
+        "floor_z": -8.32
+      },
+      {
+        "name": "Floor_2_0_Room_5",
+        "bounds_xy": [
+          23.5,
+          27.5,
+          1.2099999332427984,
+          7.320000066757203
+        ],
+        "lights": [
+          "/World/Levels/Level_1/Lights/Rooms/Level_3/Floor_2_0_Room_5/Panel_0/Light",
+          "/World/Levels/Level_1/Lights/Rooms/Level_3/Floor_2_0_Room_5/Panel_1/Light"
+        ],
+        "level": 1,
+        "floor_z": -8.32
+      },
+      {
+        "name": "Floor_2_0_Room_6",
+        "bounds_xy": [
+          27.5,
+          34.25,
+          1.2099999332427984,
+          7.320000066757203
+        ],
+        "lights": [
+          "/World/Levels/Level_1/Lights/Rooms/Level_3/Floor_2_0_Room_6/Panel_0/Light",
+          "/World/Levels/Level_1/Lights/Rooms/Level_3/Floor_2_0_Room_6/Panel_1/Light"
+        ],
+        "level": 1,
+        "floor_z": -8.32
+      },
+      {
+        "name": "Floor_2_1_Room_0",
+        "bounds_xy": [
+          37.75000001192093,
+          38.399999988079074,
+          1.2099999332427984,
+          7.320000066757203
+        ],
+        "lights": [
+          "/World/Levels/Level_1/Lights/Rooms/Level_3/Floor_2_1_Room_0/Panel_0/Light"
+        ],
+        "level": 1,
+        "floor_z": -8.32
+      },
+      {
+        "name": "Floor_0_0_Room_0",
+        "bounds_xy": [
+          1.1920928910669204e-08,
+          0.649999988079071,
+          -7.519999971389771,
+          -1.2100000286102297
+        ],
+        "lights": [
+          "/World/Levels/Level_2/Lights/Rooms/Level_3/Floor_0_0_Room_0/Panel_0/Light"
+        ],
+        "level": 2,
+        "floor_z": -4.16
+      },
+      {
+        "name": "Floor_0_1_Room_0",
+        "bounds_xy": [
+          4.150000190734865,
+          7.5,
+          -7.519999971389771,
+          -1.2100000286102297
+        ],
+        "lights": [
+          "/World/Levels/Level_2/Lights/Rooms/Level_3/Floor_0_1_Room_0/Panel_0/Light"
+        ],
+        "level": 2,
+        "floor_z": -4.16
+      },
+      {
+        "name": "Floor_0_1_Room_1",
+        "bounds_xy": [
+          7.5,
+          11.5,
+          -7.519999971389771,
+          -1.2100000286102297
+        ],
+        "lights": [
+          "/World/Levels/Level_2/Lights/Rooms/Level_3/Floor_0_1_Room_1/Panel_0/Light",
+          "/World/Levels/Level_2/Lights/Rooms/Level_3/Floor_0_1_Room_1/Panel_1/Light"
+        ],
+        "level": 2,
+        "floor_z": -4.16
+      },
+      {
+        "name": "Floor_0_1_Room_2",
+        "bounds_xy": [
+          11.5,
+          15.5,
+          -7.519999971389771,
+          -1.2100000286102297
+        ],
+        "lights": [
+          "/World/Levels/Level_2/Lights/Rooms/Level_3/Floor_0_1_Room_2/Panel_0/Light",
+          "/World/Levels/Level_2/Lights/Rooms/Level_3/Floor_0_1_Room_2/Panel_1/Light"
+        ],
+        "level": 2,
+        "floor_z": -4.16
+      },
+      {
+        "name": "Floor_0_1_Room_3",
+        "bounds_xy": [
+          15.5,
+          19.5,
+          -7.519999971389771,
+          -1.2100000286102297
+        ],
+        "lights": [
+          "/World/Levels/Level_2/Lights/Rooms/Level_3/Floor_0_1_Room_3/Panel_0/Light",
+          "/World/Levels/Level_2/Lights/Rooms/Level_3/Floor_0_1_Room_3/Panel_1/Light"
+        ],
+        "level": 2,
+        "floor_z": -4.16
+      },
+      {
+        "name": "Floor_0_1_Room_4",
+        "bounds_xy": [
+          19.5,
+          23.5,
+          -7.519999971389771,
+          -1.2100000286102297
+        ],
+        "lights": [
+          "/World/Levels/Level_2/Lights/Rooms/Level_3/Floor_0_1_Room_4/Panel_0/Light",
+          "/World/Levels/Level_2/Lights/Rooms/Level_3/Floor_0_1_Room_4/Panel_1/Light"
+        ],
+        "level": 2,
+        "floor_z": -4.16
+      },
+      {
+        "name": "Floor_0_1_Room_5",
+        "bounds_xy": [
+          23.5,
+          27.5,
+          -7.519999971389771,
+          -1.2100000286102297
+        ],
+        "lights": [
+          "/World/Levels/Level_2/Lights/Rooms/Level_3/Floor_0_1_Room_5/Panel_0/Light",
+          "/World/Levels/Level_2/Lights/Rooms/Level_3/Floor_0_1_Room_5/Panel_1/Light"
+        ],
+        "level": 2,
+        "floor_z": -4.16
+      },
+      {
+        "name": "Floor_0_1_Room_6",
+        "bounds_xy": [
+          27.5,
+          31.799999809265138,
+          -7.519999971389771,
+          -1.2100000286102297
+        ],
+        "lights": [
+          "/World/Levels/Level_2/Lights/Rooms/Level_3/Floor_0_1_Room_6/Panel_0/Light",
+          "/World/Levels/Level_2/Lights/Rooms/Level_3/Floor_0_1_Room_6/Panel_1/Light"
+        ],
+        "level": 2,
+        "floor_z": -4.16
+      },
+      {
+        "name": "Floor_0_2_Room_0",
+        "bounds_xy": [
+          34.80000004768371,
+          38.39999995231628,
+          -7.519999971389771,
+          -1.2100000286102297
+        ],
+        "lights": [
+          "/World/Levels/Level_2/Lights/Rooms/Level_3/Floor_0_2_Room_0/Panel_0/Light"
+        ],
+        "level": 2,
+        "floor_z": -4.16
+      },
+      {
+        "name": "Floor_2_0_Room_0",
+        "bounds_xy": [
+          0.0,
+          7.5,
+          1.2099999332427984,
+          7.320000066757203
+        ],
+        "lights": [
+          "/World/Levels/Level_2/Lights/Rooms/Level_3/Floor_2_0_Room_0/Panel_0/Light",
+          "/World/Levels/Level_2/Lights/Rooms/Level_3/Floor_2_0_Room_0/Panel_1/Light"
+        ],
+        "level": 2,
+        "floor_z": -4.16
+      },
+      {
+        "name": "Floor_2_0_Room_1",
+        "bounds_xy": [
+          7.5,
+          11.5,
+          1.2099999332427984,
+          7.320000066757203
+        ],
+        "lights": [
+          "/World/Levels/Level_2/Lights/Rooms/Level_3/Floor_2_0_Room_1/Panel_0/Light",
+          "/World/Levels/Level_2/Lights/Rooms/Level_3/Floor_2_0_Room_1/Panel_1/Light"
+        ],
+        "level": 2,
+        "floor_z": -4.16
+      },
+      {
+        "name": "Floor_2_0_Room_2",
+        "bounds_xy": [
+          11.5,
+          15.5,
+          1.2099999332427984,
+          7.320000066757203
+        ],
+        "lights": [
+          "/World/Levels/Level_2/Lights/Rooms/Level_3/Floor_2_0_Room_2/Panel_0/Light",
+          "/World/Levels/Level_2/Lights/Rooms/Level_3/Floor_2_0_Room_2/Panel_1/Light"
+        ],
+        "level": 2,
+        "floor_z": -4.16
+      },
+      {
+        "name": "Floor_2_0_Room_3",
+        "bounds_xy": [
+          15.5,
+          19.5,
+          1.2099999332427984,
+          7.320000066757203
+        ],
+        "lights": [
+          "/World/Levels/Level_2/Lights/Rooms/Level_3/Floor_2_0_Room_3/Panel_0/Light",
+          "/World/Levels/Level_2/Lights/Rooms/Level_3/Floor_2_0_Room_3/Panel_1/Light"
+        ],
+        "level": 2,
+        "floor_z": -4.16
+      },
+      {
+        "name": "Floor_2_0_Room_4",
+        "bounds_xy": [
+          19.5,
+          23.5,
+          1.2099999332427984,
+          7.320000066757203
+        ],
+        "lights": [
+          "/World/Levels/Level_2/Lights/Rooms/Level_3/Floor_2_0_Room_4/Panel_0/Light",
+          "/World/Levels/Level_2/Lights/Rooms/Level_3/Floor_2_0_Room_4/Panel_1/Light"
+        ],
+        "level": 2,
+        "floor_z": -4.16
+      },
+      {
+        "name": "Floor_2_0_Room_5",
+        "bounds_xy": [
+          23.5,
+          27.5,
+          1.2099999332427984,
+          7.320000066757203
+        ],
+        "lights": [
+          "/World/Levels/Level_2/Lights/Rooms/Level_3/Floor_2_0_Room_5/Panel_0/Light",
+          "/World/Levels/Level_2/Lights/Rooms/Level_3/Floor_2_0_Room_5/Panel_1/Light"
+        ],
+        "level": 2,
+        "floor_z": -4.16
+      },
+      {
+        "name": "Floor_2_0_Room_6",
+        "bounds_xy": [
+          27.5,
+          34.25,
+          1.2099999332427984,
+          7.320000066757203
+        ],
+        "lights": [
+          "/World/Levels/Level_2/Lights/Rooms/Level_3/Floor_2_0_Room_6/Panel_0/Light",
+          "/World/Levels/Level_2/Lights/Rooms/Level_3/Floor_2_0_Room_6/Panel_1/Light"
+        ],
+        "level": 2,
+        "floor_z": -4.16
+      },
+      {
+        "name": "Floor_2_1_Room_0",
+        "bounds_xy": [
+          37.75000001192093,
+          38.399999988079074,
+          1.2099999332427984,
+          7.320000066757203
+        ],
+        "lights": [
+          "/World/Levels/Level_2/Lights/Rooms/Level_3/Floor_2_1_Room_0/Panel_0/Light"
+        ],
+        "level": 2,
+        "floor_z": -4.16
+      },
+      {
+        "name": "Floor_0_0_Room_0",
+        "bounds_xy": [
+          1.1920928910669204e-08,
+          0.649999988079071,
+          -7.519999971389771,
+          -1.2100000286102297
+        ],
+        "lights": [
+          "/World/Lights/Rooms/Level_3/Floor_0_0_Room_0/Panel_0/Light"
+        ],
+        "level": 3,
+        "floor_z": 0.0
+      },
+      {
+        "name": "Floor_0_1_Room_0",
+        "bounds_xy": [
+          4.150000190734865,
+          7.5,
+          -7.519999971389771,
+          -1.2100000286102297
+        ],
+        "lights": [
+          "/World/Lights/Rooms/Level_3/Floor_0_1_Room_0/Panel_0/Light"
+        ],
+        "level": 3,
+        "floor_z": 0.0
+      },
+      {
+        "name": "Floor_0_1_Room_1",
+        "bounds_xy": [
+          7.5,
+          11.5,
+          -7.519999971389771,
+          -1.2100000286102297
+        ],
+        "lights": [
+          "/World/Lights/Rooms/Level_3/Floor_0_1_Room_1/Panel_0/Light",
+          "/World/Lights/Rooms/Level_3/Floor_0_1_Room_1/Panel_1/Light"
+        ],
+        "level": 3,
+        "floor_z": 0.0
+      },
+      {
+        "name": "Floor_0_1_Room_2",
+        "bounds_xy": [
+          11.5,
+          15.5,
+          -7.519999971389771,
+          -1.2100000286102297
+        ],
+        "lights": [
+          "/World/Lights/Rooms/Level_3/Floor_0_1_Room_2/Panel_0/Light",
+          "/World/Lights/Rooms/Level_3/Floor_0_1_Room_2/Panel_1/Light"
+        ],
+        "level": 3,
+        "floor_z": 0.0
+      },
+      {
+        "name": "Floor_0_1_Room_3",
+        "bounds_xy": [
+          15.5,
+          19.5,
+          -7.519999971389771,
+          -1.2100000286102297
+        ],
+        "lights": [
+          "/World/Lights/Rooms/Level_3/Floor_0_1_Room_3/Panel_0/Light",
+          "/World/Lights/Rooms/Level_3/Floor_0_1_Room_3/Panel_1/Light"
+        ],
+        "level": 3,
+        "floor_z": 0.0
+      },
+      {
+        "name": "Floor_0_1_Room_4",
+        "bounds_xy": [
+          19.5,
+          23.5,
+          -7.519999971389771,
+          -1.2100000286102297
+        ],
+        "lights": [
+          "/World/Lights/Rooms/Level_3/Floor_0_1_Room_4/Panel_0/Light",
+          "/World/Lights/Rooms/Level_3/Floor_0_1_Room_4/Panel_1/Light"
+        ],
+        "level": 3,
+        "floor_z": 0.0
+      },
+      {
+        "name": "Floor_0_1_Room_5",
+        "bounds_xy": [
+          23.5,
+          27.5,
+          -7.519999971389771,
+          -1.2100000286102297
+        ],
+        "lights": [
+          "/World/Lights/Rooms/Level_3/Floor_0_1_Room_5/Panel_0/Light",
+          "/World/Lights/Rooms/Level_3/Floor_0_1_Room_5/Panel_1/Light"
+        ],
+        "level": 3,
+        "floor_z": 0.0
+      },
+      {
+        "name": "Floor_0_1_Room_6",
+        "bounds_xy": [
+          27.5,
+          31.799999809265138,
+          -7.519999971389771,
+          -1.2100000286102297
+        ],
+        "lights": [
+          "/World/Lights/Rooms/Level_3/Floor_0_1_Room_6/Panel_0/Light",
+          "/World/Lights/Rooms/Level_3/Floor_0_1_Room_6/Panel_1/Light"
+        ],
+        "level": 3,
+        "floor_z": 0.0
+      },
+      {
+        "name": "Floor_0_2_Room_0",
+        "bounds_xy": [
+          34.80000004768371,
+          38.39999995231628,
+          -7.519999971389771,
+          -1.2100000286102297
+        ],
+        "lights": [
+          "/World/Lights/Rooms/Level_3/Floor_0_2_Room_0/Panel_0/Light"
+        ],
+        "level": 3,
+        "floor_z": 0.0
+      },
+      {
+        "name": "Floor_2_0_Room_0",
+        "bounds_xy": [
+          0.0,
+          7.5,
+          1.2099999332427984,
+          7.320000066757203
+        ],
+        "lights": [
+          "/World/Lights/Rooms/Level_3/Floor_2_0_Room_0/Panel_0/Light",
+          "/World/Lights/Rooms/Level_3/Floor_2_0_Room_0/Panel_1/Light"
+        ],
+        "level": 3,
+        "floor_z": 0.0
+      },
+      {
+        "name": "Floor_2_0_Room_1",
+        "bounds_xy": [
+          7.5,
+          11.5,
+          1.2099999332427984,
+          7.320000066757203
+        ],
+        "lights": [
+          "/World/Lights/Rooms/Level_3/Floor_2_0_Room_1/Panel_0/Light",
+          "/World/Lights/Rooms/Level_3/Floor_2_0_Room_1/Panel_1/Light"
+        ],
+        "level": 3,
+        "floor_z": 0.0
+      },
+      {
+        "name": "Floor_2_0_Room_2",
+        "bounds_xy": [
+          11.5,
+          15.5,
+          1.2099999332427984,
+          7.320000066757203
+        ],
+        "lights": [
+          "/World/Lights/Rooms/Level_3/Floor_2_0_Room_2/Panel_0/Light",
+          "/World/Lights/Rooms/Level_3/Floor_2_0_Room_2/Panel_1/Light"
+        ],
+        "level": 3,
+        "floor_z": 0.0
+      },
+      {
+        "name": "Floor_2_0_Room_3",
+        "bounds_xy": [
+          15.5,
+          19.5,
+          1.2099999332427984,
+          7.320000066757203
+        ],
+        "lights": [
+          "/World/Lights/Rooms/Level_3/Floor_2_0_Room_3/Panel_0/Light",
+          "/World/Lights/Rooms/Level_3/Floor_2_0_Room_3/Panel_1/Light"
+        ],
+        "level": 3,
+        "floor_z": 0.0
+      },
+      {
+        "name": "Floor_2_0_Room_4",
+        "bounds_xy": [
+          19.5,
+          23.5,
+          1.2099999332427984,
+          7.320000066757203
+        ],
+        "lights": [
+          "/World/Lights/Rooms/Level_3/Floor_2_0_Room_4/Panel_0/Light",
+          "/World/Lights/Rooms/Level_3/Floor_2_0_Room_4/Panel_1/Light"
+        ],
+        "level": 3,
+        "floor_z": 0.0
+      },
+      {
+        "name": "Floor_2_0_Room_5",
+        "bounds_xy": [
+          23.5,
+          27.5,
+          1.2099999332427984,
+          7.320000066757203
+        ],
+        "lights": [
+          "/World/Lights/Rooms/Level_3/Floor_2_0_Room_5/Panel_0/Light",
+          "/World/Lights/Rooms/Level_3/Floor_2_0_Room_5/Panel_1/Light"
+        ],
+        "level": 3,
+        "floor_z": 0.0
+      },
+      {
+        "name": "Floor_2_0_Room_6",
+        "bounds_xy": [
+          27.5,
+          34.25,
+          1.2099999332427984,
+          7.320000066757203
+        ],
+        "lights": [
+          "/World/Lights/Rooms/Level_3/Floor_2_0_Room_6/Panel_0/Light",
+          "/World/Lights/Rooms/Level_3/Floor_2_0_Room_6/Panel_1/Light"
+        ],
+        "level": 3,
+        "floor_z": 0.0
+      },
+      {
+        "name": "Floor_2_1_Room_0",
+        "bounds_xy": [
+          37.75000001192093,
+          38.399999988079074,
+          1.2099999332427984,
+          7.320000066757203
+        ],
+        "lights": [
+          "/World/Lights/Rooms/Level_3/Floor_2_1_Room_0/Panel_0/Light"
+        ],
+        "level": 3,
+        "floor_z": 0.0
+      },
+      {
+        "name": "Floor_0_0_Room_0",
+        "bounds_xy": [
+          1.1920928910669204e-08,
+          0.649999988079071,
+          -7.519999971389771,
+          -1.2100000286102297
+        ],
+        "lights": [
+          "/World/Levels/Level_4/Lights/Rooms/Level_3/Floor_0_0_Room_0/Panel_0/Light"
+        ],
+        "level": 4,
+        "floor_z": 4.16
+      },
+      {
+        "name": "Floor_0_1_Room_0",
+        "bounds_xy": [
+          4.150000190734865,
+          7.5,
+          -7.519999971389771,
+          -1.2100000286102297
+        ],
+        "lights": [
+          "/World/Levels/Level_4/Lights/Rooms/Level_3/Floor_0_1_Room_0/Panel_0/Light"
+        ],
+        "level": 4,
+        "floor_z": 4.16
+      },
+      {
+        "name": "Floor_0_1_Room_1",
+        "bounds_xy": [
+          7.5,
+          11.5,
+          -7.519999971389771,
+          -1.2100000286102297
+        ],
+        "lights": [
+          "/World/Levels/Level_4/Lights/Rooms/Level_3/Floor_0_1_Room_1/Panel_0/Light",
+          "/World/Levels/Level_4/Lights/Rooms/Level_3/Floor_0_1_Room_1/Panel_1/Light"
+        ],
+        "level": 4,
+        "floor_z": 4.16
+      },
+      {
+        "name": "Floor_0_1_Room_2",
+        "bounds_xy": [
+          11.5,
+          15.5,
+          -7.519999971389771,
+          -1.2100000286102297
+        ],
+        "lights": [
+          "/World/Levels/Level_4/Lights/Rooms/Level_3/Floor_0_1_Room_2/Panel_0/Light",
+          "/World/Levels/Level_4/Lights/Rooms/Level_3/Floor_0_1_Room_2/Panel_1/Light"
+        ],
+        "level": 4,
+        "floor_z": 4.16
+      },
+      {
+        "name": "Floor_0_1_Room_3",
+        "bounds_xy": [
+          15.5,
+          19.5,
+          -7.519999971389771,
+          -1.2100000286102297
+        ],
+        "lights": [
+          "/World/Levels/Level_4/Lights/Rooms/Level_3/Floor_0_1_Room_3/Panel_0/Light",
+          "/World/Levels/Level_4/Lights/Rooms/Level_3/Floor_0_1_Room_3/Panel_1/Light"
+        ],
+        "level": 4,
+        "floor_z": 4.16
+      },
+      {
+        "name": "Floor_0_1_Room_4",
+        "bounds_xy": [
+          19.5,
+          23.5,
+          -7.519999971389771,
+          -1.2100000286102297
+        ],
+        "lights": [
+          "/World/Levels/Level_4/Lights/Rooms/Level_3/Floor_0_1_Room_4/Panel_0/Light",
+          "/World/Levels/Level_4/Lights/Rooms/Level_3/Floor_0_1_Room_4/Panel_1/Light"
+        ],
+        "level": 4,
+        "floor_z": 4.16
+      },
+      {
+        "name": "Floor_0_1_Room_5",
+        "bounds_xy": [
+          23.5,
+          27.5,
+          -7.519999971389771,
+          -1.2100000286102297
+        ],
+        "lights": [
+          "/World/Levels/Level_4/Lights/Rooms/Level_3/Floor_0_1_Room_5/Panel_0/Light",
+          "/World/Levels/Level_4/Lights/Rooms/Level_3/Floor_0_1_Room_5/Panel_1/Light"
+        ],
+        "level": 4,
+        "floor_z": 4.16
+      },
+      {
+        "name": "Floor_0_1_Room_6",
+        "bounds_xy": [
+          27.5,
+          31.799999809265138,
+          -7.519999971389771,
+          -1.2100000286102297
+        ],
+        "lights": [
+          "/World/Levels/Level_4/Lights/Rooms/Level_3/Floor_0_1_Room_6/Panel_0/Light",
+          "/World/Levels/Level_4/Lights/Rooms/Level_3/Floor_0_1_Room_6/Panel_1/Light"
+        ],
+        "level": 4,
+        "floor_z": 4.16
+      },
+      {
+        "name": "Floor_0_2_Room_0",
+        "bounds_xy": [
+          34.80000004768371,
+          38.39999995231628,
+          -7.519999971389771,
+          -1.2100000286102297
+        ],
+        "lights": [
+          "/World/Levels/Level_4/Lights/Rooms/Level_3/Floor_0_2_Room_0/Panel_0/Light"
+        ],
+        "level": 4,
+        "floor_z": 4.16
+      },
+      {
+        "name": "Floor_2_0_Room_0",
+        "bounds_xy": [
+          0.0,
+          7.5,
+          1.2099999332427984,
+          7.320000066757203
+        ],
+        "lights": [
+          "/World/Levels/Level_4/Lights/Rooms/Level_3/Floor_2_0_Room_0/Panel_0/Light",
+          "/World/Levels/Level_4/Lights/Rooms/Level_3/Floor_2_0_Room_0/Panel_1/Light"
+        ],
+        "level": 4,
+        "floor_z": 4.16
+      },
+      {
+        "name": "Floor_2_0_Room_1",
+        "bounds_xy": [
+          7.5,
+          11.5,
+          1.2099999332427984,
+          7.320000066757203
+        ],
+        "lights": [
+          "/World/Levels/Level_4/Lights/Rooms/Level_3/Floor_2_0_Room_1/Panel_0/Light",
+          "/World/Levels/Level_4/Lights/Rooms/Level_3/Floor_2_0_Room_1/Panel_1/Light"
+        ],
+        "level": 4,
+        "floor_z": 4.16
+      },
+      {
+        "name": "Floor_2_0_Room_2",
+        "bounds_xy": [
+          11.5,
+          15.5,
+          1.2099999332427984,
+          7.320000066757203
+        ],
+        "lights": [
+          "/World/Levels/Level_4/Lights/Rooms/Level_3/Floor_2_0_Room_2/Panel_0/Light",
+          "/World/Levels/Level_4/Lights/Rooms/Level_3/Floor_2_0_Room_2/Panel_1/Light"
+        ],
+        "level": 4,
+        "floor_z": 4.16
+      },
+      {
+        "name": "Floor_2_0_Room_3",
+        "bounds_xy": [
+          15.5,
+          19.5,
+          1.2099999332427984,
+          7.320000066757203
+        ],
+        "lights": [
+          "/World/Levels/Level_4/Lights/Rooms/Level_3/Floor_2_0_Room_3/Panel_0/Light",
+          "/World/Levels/Level_4/Lights/Rooms/Level_3/Floor_2_0_Room_3/Panel_1/Light"
+        ],
+        "level": 4,
+        "floor_z": 4.16
+      },
+      {
+        "name": "Floor_2_0_Room_4",
+        "bounds_xy": [
+          19.5,
+          23.5,
+          1.2099999332427984,
+          7.320000066757203
+        ],
+        "lights": [
+          "/World/Levels/Level_4/Lights/Rooms/Level_3/Floor_2_0_Room_4/Panel_0/Light",
+          "/World/Levels/Level_4/Lights/Rooms/Level_3/Floor_2_0_Room_4/Panel_1/Light"
+        ],
+        "level": 4,
+        "floor_z": 4.16
+      },
+      {
+        "name": "Floor_2_0_Room_5",
+        "bounds_xy": [
+          23.5,
+          27.5,
+          1.2099999332427984,
+          7.320000066757203
+        ],
+        "lights": [
+          "/World/Levels/Level_4/Lights/Rooms/Level_3/Floor_2_0_Room_5/Panel_0/Light",
+          "/World/Levels/Level_4/Lights/Rooms/Level_3/Floor_2_0_Room_5/Panel_1/Light"
+        ],
+        "level": 4,
+        "floor_z": 4.16
+      },
+      {
+        "name": "Floor_2_0_Room_6",
+        "bounds_xy": [
+          27.5,
+          34.25,
+          1.2099999332427984,
+          7.320000066757203
+        ],
+        "lights": [
+          "/World/Levels/Level_4/Lights/Rooms/Level_3/Floor_2_0_Room_6/Panel_0/Light",
+          "/World/Levels/Level_4/Lights/Rooms/Level_3/Floor_2_0_Room_6/Panel_1/Light"
+        ],
+        "level": 4,
+        "floor_z": 4.16
+      },
+      {
+        "name": "Floor_2_1_Room_0",
+        "bounds_xy": [
+          37.75000001192093,
+          38.399999988079074,
+          1.2099999332427984,
+          7.320000066757203
+        ],
+        "lights": [
+          "/World/Levels/Level_4/Lights/Rooms/Level_3/Floor_2_1_Room_0/Panel_0/Light"
+        ],
+        "level": 4,
+        "floor_z": 4.16
+      },
+      {
+        "name": "Floor_0_0_Room_0",
+        "bounds_xy": [
+          1.1920928910669204e-08,
+          0.649999988079071,
+          -7.519999971389771,
+          -1.2100000286102297
+        ],
+        "lights": [
+          "/World/Levels/Level_5/Lights/Rooms/Level_3/Floor_0_0_Room_0/Panel_0/Light"
+        ],
+        "level": 5,
+        "floor_z": 8.32
+      },
+      {
+        "name": "Floor_0_1_Room_0",
+        "bounds_xy": [
+          4.150000190734865,
+          7.5,
+          -7.519999971389771,
+          -1.2100000286102297
+        ],
+        "lights": [
+          "/World/Levels/Level_5/Lights/Rooms/Level_3/Floor_0_1_Room_0/Panel_0/Light"
+        ],
+        "level": 5,
+        "floor_z": 8.32
+      },
+      {
+        "name": "Floor_0_1_Room_1",
+        "bounds_xy": [
+          7.5,
+          11.5,
+          -7.519999971389771,
+          -1.2100000286102297
+        ],
+        "lights": [
+          "/World/Levels/Level_5/Lights/Rooms/Level_3/Floor_0_1_Room_1/Panel_0/Light",
+          "/World/Levels/Level_5/Lights/Rooms/Level_3/Floor_0_1_Room_1/Panel_1/Light"
+        ],
+        "level": 5,
+        "floor_z": 8.32
+      },
+      {
+        "name": "Floor_0_1_Room_2",
+        "bounds_xy": [
+          11.5,
+          15.5,
+          -7.519999971389771,
+          -1.2100000286102297
+        ],
+        "lights": [
+          "/World/Levels/Level_5/Lights/Rooms/Level_3/Floor_0_1_Room_2/Panel_0/Light",
+          "/World/Levels/Level_5/Lights/Rooms/Level_3/Floor_0_1_Room_2/Panel_1/Light"
+        ],
+        "level": 5,
+        "floor_z": 8.32
+      },
+      {
+        "name": "Floor_0_1_Room_3",
+        "bounds_xy": [
+          15.5,
+          19.5,
+          -7.519999971389771,
+          -1.2100000286102297
+        ],
+        "lights": [
+          "/World/Levels/Level_5/Lights/Rooms/Level_3/Floor_0_1_Room_3/Panel_0/Light",
+          "/World/Levels/Level_5/Lights/Rooms/Level_3/Floor_0_1_Room_3/Panel_1/Light"
+        ],
+        "level": 5,
+        "floor_z": 8.32
+      },
+      {
+        "name": "Floor_0_1_Room_4",
+        "bounds_xy": [
+          19.5,
+          23.5,
+          -7.519999971389771,
+          -1.2100000286102297
+        ],
+        "lights": [
+          "/World/Levels/Level_5/Lights/Rooms/Level_3/Floor_0_1_Room_4/Panel_0/Light",
+          "/World/Levels/Level_5/Lights/Rooms/Level_3/Floor_0_1_Room_4/Panel_1/Light"
+        ],
+        "level": 5,
+        "floor_z": 8.32
+      },
+      {
+        "name": "Floor_0_1_Room_5",
+        "bounds_xy": [
+          23.5,
+          27.5,
+          -7.519999971389771,
+          -1.2100000286102297
+        ],
+        "lights": [
+          "/World/Levels/Level_5/Lights/Rooms/Level_3/Floor_0_1_Room_5/Panel_0/Light",
+          "/World/Levels/Level_5/Lights/Rooms/Level_3/Floor_0_1_Room_5/Panel_1/Light"
+        ],
+        "level": 5,
+        "floor_z": 8.32
+      },
+      {
+        "name": "Floor_0_1_Room_6",
+        "bounds_xy": [
+          27.5,
+          31.799999809265138,
+          -7.519999971389771,
+          -1.2100000286102297
+        ],
+        "lights": [
+          "/World/Levels/Level_5/Lights/Rooms/Level_3/Floor_0_1_Room_6/Panel_0/Light",
+          "/World/Levels/Level_5/Lights/Rooms/Level_3/Floor_0_1_Room_6/Panel_1/Light"
+        ],
+        "level": 5,
+        "floor_z": 8.32
+      },
+      {
+        "name": "Floor_0_2_Room_0",
+        "bounds_xy": [
+          34.80000004768371,
+          38.39999995231628,
+          -7.519999971389771,
+          -1.2100000286102297
+        ],
+        "lights": [
+          "/World/Levels/Level_5/Lights/Rooms/Level_3/Floor_0_2_Room_0/Panel_0/Light"
+        ],
+        "level": 5,
+        "floor_z": 8.32
+      },
+      {
+        "name": "Floor_2_0_Room_0",
+        "bounds_xy": [
+          0.0,
+          7.5,
+          1.2099999332427984,
+          7.320000066757203
+        ],
+        "lights": [
+          "/World/Levels/Level_5/Lights/Rooms/Level_3/Floor_2_0_Room_0/Panel_0/Light",
+          "/World/Levels/Level_5/Lights/Rooms/Level_3/Floor_2_0_Room_0/Panel_1/Light"
+        ],
+        "level": 5,
+        "floor_z": 8.32
+      },
+      {
+        "name": "Floor_2_0_Room_1",
+        "bounds_xy": [
+          7.5,
+          11.5,
+          1.2099999332427984,
+          7.320000066757203
+        ],
+        "lights": [
+          "/World/Levels/Level_5/Lights/Rooms/Level_3/Floor_2_0_Room_1/Panel_0/Light",
+          "/World/Levels/Level_5/Lights/Rooms/Level_3/Floor_2_0_Room_1/Panel_1/Light"
+        ],
+        "level": 5,
+        "floor_z": 8.32
+      },
+      {
+        "name": "Floor_2_0_Room_2",
+        "bounds_xy": [
+          11.5,
+          15.5,
+          1.2099999332427984,
+          7.320000066757203
+        ],
+        "lights": [
+          "/World/Levels/Level_5/Lights/Rooms/Level_3/Floor_2_0_Room_2/Panel_0/Light",
+          "/World/Levels/Level_5/Lights/Rooms/Level_3/Floor_2_0_Room_2/Panel_1/Light"
+        ],
+        "level": 5,
+        "floor_z": 8.32
+      },
+      {
+        "name": "Floor_2_0_Room_3",
+        "bounds_xy": [
+          15.5,
+          19.5,
+          1.2099999332427984,
+          7.320000066757203
+        ],
+        "lights": [
+          "/World/Levels/Level_5/Lights/Rooms/Level_3/Floor_2_0_Room_3/Panel_0/Light",
+          "/World/Levels/Level_5/Lights/Rooms/Level_3/Floor_2_0_Room_3/Panel_1/Light"
+        ],
+        "level": 5,
+        "floor_z": 8.32
+      },
+      {
+        "name": "Floor_2_0_Room_4",
+        "bounds_xy": [
+          19.5,
+          23.5,
+          1.2099999332427984,
+          7.320000066757203
+        ],
+        "lights": [
+          "/World/Levels/Level_5/Lights/Rooms/Level_3/Floor_2_0_Room_4/Panel_0/Light",
+          "/World/Levels/Level_5/Lights/Rooms/Level_3/Floor_2_0_Room_4/Panel_1/Light"
+        ],
+        "level": 5,
+        "floor_z": 8.32
+      },
+      {
+        "name": "Floor_2_0_Room_5",
+        "bounds_xy": [
+          23.5,
+          27.5,
+          1.2099999332427984,
+          7.320000066757203
+        ],
+        "lights": [
+          "/World/Levels/Level_5/Lights/Rooms/Level_3/Floor_2_0_Room_5/Panel_0/Light",
+          "/World/Levels/Level_5/Lights/Rooms/Level_3/Floor_2_0_Room_5/Panel_1/Light"
+        ],
+        "level": 5,
+        "floor_z": 8.32
+      },
+      {
+        "name": "Floor_2_0_Room_6",
+        "bounds_xy": [
+          27.5,
+          34.25,
+          1.2099999332427984,
+          7.320000066757203
+        ],
+        "lights": [
+          "/World/Levels/Level_5/Lights/Rooms/Level_3/Floor_2_0_Room_6/Panel_0/Light",
+          "/World/Levels/Level_5/Lights/Rooms/Level_3/Floor_2_0_Room_6/Panel_1/Light"
+        ],
+        "level": 5,
+        "floor_z": 8.32
+      },
+      {
+        "name": "Floor_2_1_Room_0",
+        "bounds_xy": [
+          37.75000001192093,
+          38.399999988079074,
+          1.2099999332427984,
+          7.320000066757203
+        ],
+        "lights": [
+          "/World/Levels/Level_5/Lights/Rooms/Level_3/Floor_2_1_Room_0/Panel_0/Light"
+        ],
+        "level": 5,
+        "floor_z": 8.32
+      },
+      {
+        "name": "Floor_0_0_Room_0",
+        "bounds_xy": [
+          1.1920928910669204e-08,
+          0.649999988079071,
+          -7.519999971389771,
+          -1.2100000286102297
+        ],
+        "lights": [
+          "/World/Levels/Level_6/Lights/Rooms/Level_3/Floor_0_0_Room_0/Panel_0/Light"
+        ],
+        "level": 6,
+        "floor_z": 12.48
+      },
+      {
+        "name": "Floor_0_1_Room_0",
+        "bounds_xy": [
+          4.150000190734865,
+          7.5,
+          -7.519999971389771,
+          -1.2100000286102297
+        ],
+        "lights": [
+          "/World/Levels/Level_6/Lights/Rooms/Level_3/Floor_0_1_Room_0/Panel_0/Light"
+        ],
+        "level": 6,
+        "floor_z": 12.48
+      },
+      {
+        "name": "Floor_0_1_Room_1",
+        "bounds_xy": [
+          7.5,
+          11.5,
+          -7.519999971389771,
+          -1.2100000286102297
+        ],
+        "lights": [
+          "/World/Levels/Level_6/Lights/Rooms/Level_3/Floor_0_1_Room_1/Panel_0/Light",
+          "/World/Levels/Level_6/Lights/Rooms/Level_3/Floor_0_1_Room_1/Panel_1/Light"
+        ],
+        "level": 6,
+        "floor_z": 12.48
+      },
+      {
+        "name": "Floor_0_1_Room_2",
+        "bounds_xy": [
+          11.5,
+          15.5,
+          -7.519999971389771,
+          -1.2100000286102297
+        ],
+        "lights": [
+          "/World/Levels/Level_6/Lights/Rooms/Level_3/Floor_0_1_Room_2/Panel_0/Light",
+          "/World/Levels/Level_6/Lights/Rooms/Level_3/Floor_0_1_Room_2/Panel_1/Light"
+        ],
+        "level": 6,
+        "floor_z": 12.48
+      },
+      {
+        "name": "Floor_0_1_Room_3",
+        "bounds_xy": [
+          15.5,
+          19.5,
+          -7.519999971389771,
+          -1.2100000286102297
+        ],
+        "lights": [
+          "/World/Levels/Level_6/Lights/Rooms/Level_3/Floor_0_1_Room_3/Panel_0/Light",
+          "/World/Levels/Level_6/Lights/Rooms/Level_3/Floor_0_1_Room_3/Panel_1/Light"
+        ],
+        "level": 6,
+        "floor_z": 12.48
+      },
+      {
+        "name": "Floor_0_1_Room_4",
+        "bounds_xy": [
+          19.5,
+          23.5,
+          -7.519999971389771,
+          -1.2100000286102297
+        ],
+        "lights": [
+          "/World/Levels/Level_6/Lights/Rooms/Level_3/Floor_0_1_Room_4/Panel_0/Light",
+          "/World/Levels/Level_6/Lights/Rooms/Level_3/Floor_0_1_Room_4/Panel_1/Light"
+        ],
+        "level": 6,
+        "floor_z": 12.48
+      },
+      {
+        "name": "Floor_0_1_Room_5",
+        "bounds_xy": [
+          23.5,
+          27.5,
+          -7.519999971389771,
+          -1.2100000286102297
+        ],
+        "lights": [
+          "/World/Levels/Level_6/Lights/Rooms/Level_3/Floor_0_1_Room_5/Panel_0/Light",
+          "/World/Levels/Level_6/Lights/Rooms/Level_3/Floor_0_1_Room_5/Panel_1/Light"
+        ],
+        "level": 6,
+        "floor_z": 12.48
+      },
+      {
+        "name": "Floor_0_1_Room_6",
+        "bounds_xy": [
+          27.5,
+          31.799999809265138,
+          -7.519999971389771,
+          -1.2100000286102297
+        ],
+        "lights": [
+          "/World/Levels/Level_6/Lights/Rooms/Level_3/Floor_0_1_Room_6/Panel_0/Light",
+          "/World/Levels/Level_6/Lights/Rooms/Level_3/Floor_0_1_Room_6/Panel_1/Light"
+        ],
+        "level": 6,
+        "floor_z": 12.48
+      },
+      {
+        "name": "Floor_0_2_Room_0",
+        "bounds_xy": [
+          34.80000004768371,
+          38.39999995231628,
+          -7.519999971389771,
+          -1.2100000286102297
+        ],
+        "lights": [
+          "/World/Levels/Level_6/Lights/Rooms/Level_3/Floor_0_2_Room_0/Panel_0/Light"
+        ],
+        "level": 6,
+        "floor_z": 12.48
+      },
+      {
+        "name": "Floor_2_0_Room_0",
+        "bounds_xy": [
+          0.0,
+          7.5,
+          1.2099999332427984,
+          7.320000066757203
+        ],
+        "lights": [
+          "/World/Levels/Level_6/Lights/Rooms/Level_3/Floor_2_0_Room_0/Panel_0/Light",
+          "/World/Levels/Level_6/Lights/Rooms/Level_3/Floor_2_0_Room_0/Panel_1/Light"
+        ],
+        "level": 6,
+        "floor_z": 12.48
+      },
+      {
+        "name": "Floor_2_0_Room_1",
+        "bounds_xy": [
+          7.5,
+          11.5,
+          1.2099999332427984,
+          7.320000066757203
+        ],
+        "lights": [
+          "/World/Levels/Level_6/Lights/Rooms/Level_3/Floor_2_0_Room_1/Panel_0/Light",
+          "/World/Levels/Level_6/Lights/Rooms/Level_3/Floor_2_0_Room_1/Panel_1/Light"
+        ],
+        "level": 6,
+        "floor_z": 12.48
+      },
+      {
+        "name": "Floor_2_0_Room_2",
+        "bounds_xy": [
+          11.5,
+          15.5,
+          1.2099999332427984,
+          7.320000066757203
+        ],
+        "lights": [
+          "/World/Levels/Level_6/Lights/Rooms/Level_3/Floor_2_0_Room_2/Panel_0/Light",
+          "/World/Levels/Level_6/Lights/Rooms/Level_3/Floor_2_0_Room_2/Panel_1/Light"
+        ],
+        "level": 6,
+        "floor_z": 12.48
+      },
+      {
+        "name": "Floor_2_0_Room_3",
+        "bounds_xy": [
+          15.5,
+          19.5,
+          1.2099999332427984,
+          7.320000066757203
+        ],
+        "lights": [
+          "/World/Levels/Level_6/Lights/Rooms/Level_3/Floor_2_0_Room_3/Panel_0/Light",
+          "/World/Levels/Level_6/Lights/Rooms/Level_3/Floor_2_0_Room_3/Panel_1/Light"
+        ],
+        "level": 6,
+        "floor_z": 12.48
+      },
+      {
+        "name": "Floor_2_0_Room_4",
+        "bounds_xy": [
+          19.5,
+          23.5,
+          1.2099999332427984,
+          7.320000066757203
+        ],
+        "lights": [
+          "/World/Levels/Level_6/Lights/Rooms/Level_3/Floor_2_0_Room_4/Panel_0/Light",
+          "/World/Levels/Level_6/Lights/Rooms/Level_3/Floor_2_0_Room_4/Panel_1/Light"
+        ],
+        "level": 6,
+        "floor_z": 12.48
+      },
+      {
+        "name": "Floor_2_0_Room_5",
+        "bounds_xy": [
+          23.5,
+          27.5,
+          1.2099999332427984,
+          7.320000066757203
+        ],
+        "lights": [
+          "/World/Levels/Level_6/Lights/Rooms/Level_3/Floor_2_0_Room_5/Panel_0/Light",
+          "/World/Levels/Level_6/Lights/Rooms/Level_3/Floor_2_0_Room_5/Panel_1/Light"
+        ],
+        "level": 6,
+        "floor_z": 12.48
+      },
+      {
+        "name": "Floor_2_0_Room_6",
+        "bounds_xy": [
+          27.5,
+          34.25,
+          1.2099999332427984,
+          7.320000066757203
+        ],
+        "lights": [
+          "/World/Levels/Level_6/Lights/Rooms/Level_3/Floor_2_0_Room_6/Panel_0/Light",
+          "/World/Levels/Level_6/Lights/Rooms/Level_3/Floor_2_0_Room_6/Panel_1/Light"
+        ],
+        "level": 6,
+        "floor_z": 12.48
+      },
+      {
+        "name": "Floor_2_1_Room_0",
+        "bounds_xy": [
+          37.75000001192093,
+          38.399999988079074,
+          1.2099999332427984,
+          7.320000066757203
+        ],
+        "lights": [
+          "/World/Levels/Level_6/Lights/Rooms/Level_3/Floor_2_1_Room_0/Panel_0/Light"
+        ],
+        "level": 6,
+        "floor_z": 12.48
+      }
+    ],
+    "stair_supplement_lights": 64,
+    "configuration": "config/lighting.json",
+    "light_prims": 336
+  },
+  "levels": {
+    "floors": {
+      "1": {
+        "root": "/World/Levels/Level_1",
+        "floor_z": -8.32,
+        "room_root": "/World/Levels/Level_1/RoomWings",
+        "door_assemblies": 16
+      },
+      "2": {
+        "root": "/World/Levels/Level_2",
+        "floor_z": -4.16,
+        "room_root": "/World/Levels/Level_2/RoomWings",
+        "door_assemblies": 16
+      },
+      "3": {
+        "root": "/World",
+        "floor_z": 0.0,
+        "room_root": "/World/Exterior/RoomWings",
+        "door_assemblies": 16
+      },
+      "4": {
+        "root": "/World/Levels/Level_4",
+        "floor_z": 4.16,
+        "room_root": "/World/Levels/Level_4/RoomWings",
+        "door_assemblies": 16
+      },
+      "5": {
+        "root": "/World/Levels/Level_5",
+        "floor_z": 8.32,
+        "room_root": "/World/Levels/Level_5/RoomWings",
+        "door_assemblies": 16
+      },
+      "6": {
+        "root": "/World/Levels/Level_6",
+        "floor_z": 12.48,
+        "room_root": "/World/Levels/Level_6/RoomWings",
+        "door_assemblies": 16
+      }
+    },
+    "stair_connections": [
+      {
+        "lower_level": 1,
+        "upper_level": 2,
+        "stair": "Start",
+        "lower_path": "/World/Levels/Level_1/Stairs/Start",
+        "upper_path": "/World/Levels/Level_2/Stairs/Start",
+        "landing_z": -6.24
+      },
+      {
+        "lower_level": 1,
+        "upper_level": 2,
+        "stair": "Far",
+        "lower_path": "/World/Levels/Level_1/Stairs/Far",
+        "upper_path": "/World/Levels/Level_2/Stairs/Far",
+        "landing_z": -6.24
+      },
+      {
+        "lower_level": 2,
+        "upper_level": 3,
+        "stair": "Start",
+        "lower_path": "/World/Levels/Level_2/Stairs/Start",
+        "upper_path": "/World/Stairs/Start",
+        "landing_z": -2.08
+      },
+      {
+        "lower_level": 2,
+        "upper_level": 3,
+        "stair": "Far",
+        "lower_path": "/World/Levels/Level_2/Stairs/Far",
+        "upper_path": "/World/Stairs/Far",
+        "landing_z": -2.08
+      },
+      {
+        "lower_level": 3,
+        "upper_level": 4,
+        "stair": "Start",
+        "lower_path": "/World/Stairs/Start",
+        "upper_path": "/World/Levels/Level_4/Stairs/Start",
+        "landing_z": 2.08
+      },
+      {
+        "lower_level": 3,
+        "upper_level": 4,
+        "stair": "Far",
+        "lower_path": "/World/Stairs/Far",
+        "upper_path": "/World/Levels/Level_4/Stairs/Far",
+        "landing_z": 2.08
+      },
+      {
+        "lower_level": 4,
+        "upper_level": 5,
+        "stair": "Start",
+        "lower_path": "/World/Levels/Level_4/Stairs/Start",
+        "upper_path": "/World/Levels/Level_5/Stairs/Start",
+        "landing_z": 6.24
+      },
+      {
+        "lower_level": 4,
+        "upper_level": 5,
+        "stair": "Far",
+        "lower_path": "/World/Levels/Level_4/Stairs/Far",
+        "upper_path": "/World/Levels/Level_5/Stairs/Far",
+        "landing_z": 6.24
+      },
+      {
+        "lower_level": 5,
+        "upper_level": 6,
+        "stair": "Start",
+        "lower_path": "/World/Levels/Level_5/Stairs/Start",
+        "upper_path": "/World/Levels/Level_6/Stairs/Start",
+        "landing_z": 10.4
+      },
+      {
+        "lower_level": 5,
+        "upper_level": 6,
+        "stair": "Far",
+        "lower_path": "/World/Levels/Level_5/Stairs/Far",
+        "upper_path": "/World/Levels/Level_6/Stairs/Far",
+        "landing_z": 10.4
+      }
+    ],
+    "source": "User-requested repetition of the video-based third-floor layout."
   },
   "limitations": [
     "Only the four user-supplied dimensions are measurement constraints; the 0.16 m riser is approximate.",
     "38.4 m length is an editable visual-layout estimate, not a surveyed or recovered video-odometry measurement.",
     "13 risers are a visual count estimate; 0.28 m tread and terminal landings are inferred.",
     "Far stairs and downward-flight completion reuse estimated start-flight dimensions; hidden geometry is not observed.",
-    "Only the filmed corridor level and stair terminal landings are modeled, not full upper/lower floors or rooms behind doors.",
+    "All six interiors repeat the surveyed third-floor layout at the user's request; floors other than 3 are not independent survey reconstructions.",
     "Room-door count, spacing, signs and elevator dimensions are approximate; no unverified room names are reproduced.",
     "Closed doors and elevator are static; no robot policy or door/elevator animation is included."
   ]

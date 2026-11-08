@@ -1,6 +1,6 @@
 # CBNU E10 Isaac Sim 월드
 
-`CBNU-E10.mp4`, 사용자 제공 치수, **충북대 공식 E10 외관 사진**으로 만든 월드다. 붉은 벽돌과 반복 창호를 갖춘 6층 외피 안에 영상의 3층 복도·계단을 배치했다. 촬영된 3층 바닥은 `z=0`이며, E9 저장소 없이 독립적으로 사용할 수 있다.
+`CBNU-E10.mp4`, 사용자 제공 치수, **충북대 공식 E10 외관 사진**으로 만든 월드다. 사용자 요청에 따라 **1–6층 모두 3층의 복도·문·방 구획·계단·소품을 반복**하고 모든 층과 문 뒤 공간에 조명을 배치했다. 촬영된 3층 바닥은 `z=0`이며, E9 저장소 없이 독립적으로 사용할 수 있다.
 
 **[Isaac Sim에서 열 월드: cbnu_e10.usda](worlds/cbnu_e10/cbnu_e10.usda)**
 
@@ -22,6 +22,10 @@ bash scripts/open_world.sh
 ```
 
 복도에서 시작하려면 `E10_VIEW=Corridor bash scripts/open_world.sh`를 사용한다. 이 환경변수는 미리보기 시점 데이터만 선택하며 저장 카메라를 추가하지 않는다.
+
+각 층 복도는 `E10_VIEW=CorridorLevel1`부터 `CorridorLevel6`까지 선택한다. 방 안쪽은 `E10_VIEW=RoomFront` 또는 `RoomRear`로 확인할 수 있다. 조명은 USD에 저장되어 있으므로 기본 월드를 다시 열어도 유지된다.
+
+각 층 엘리베이터 옆에 **1F / 1층–6F / 6층 번호판**을 붙였다. 남색 바탕·흰색 큰 글씨이며, 판 크기는 50×70cm, 중심 높이는 해당 층 바닥에서 1.62m다. `E10_VIEW=ElevatorLevel1`부터 `ElevatorLevel6`까지 번호판 앞 시점을 선택할 수 있다.
 
 설치 위치 기본값은 `/home/a/isaacsim`이다. 다른 설치는 `E10_ISAAC_ROOT` 환경변수로 지정한다. GUI 실행 스크립트의 실제 창 실행은 이번 검증에 포함하지 않았으며, 동일 Stage는 Isaac Sim 5.1.0의 headless viewport에서 열고 렌더링했다.
 
@@ -48,7 +52,9 @@ bash scripts/open_world.sh
 
 실측 제약과 추정값은 [layout.json](worlds/cbnu_e10/config/layout.json)의 `measured`, `estimated`로 분리했다. 문 간격·문 개수·화분 공간·엘리베이터 치수도 영상 기반 근사다. 전체 길이를 바꾸면 `doors`, `stairs`, `alcove_x_range` 등 절대 좌표도 함께 조정한다.
 
-계단은 영상에서 확인되는 상승·하강 방향을 반영한 각 13단과 끝참까지만 만든다. 끝부분 계단실의 내부와 하강 구간의 가려진 부분은 시작 계단 치수를 재사용한 추정 형상이다. **다른 층의 복도·완전한 층간 계단·방 내부는 재현하지 않았다.** 3층 문 뒤에는 외피를 연결하는 바닥·천장·구획벽만 있으며 닫힌 문으로 구분된다.
+각 층에 같은 복도·문 16조(문짝 32개)·방 구획 17곳·화분 공간·계단실 2곳이 있다. 바닥 높이는 1층부터 **−8.32, −4.16, 0, 4.16, 8.32, 12.48m**다. 3층을 제외한 층은 사용자가 요청한 동일 구조 복제이며, 해당 층을 개별 조사해 복원한 것이 아니다. 방 내부는 바닥·천장·구획벽을 갖춘 빈 공간이고 문은 닫힌 정적 형상이다.
+
+13단씩 두 경사 구간이 중간참에서 이어져 한 층 높이 4.16m를 연결한다. 양 끝 계단실의 **층간 연결 10곳**에 중간참을 연결하고, 통로를 막던 중간참 난간과 칸막이 끝부분을 정리했다. 1층 하강 끝은 바닥으로 막았고 6층 상승 끝은 난간으로 마감했다. 가려진 계단·방 구획은 추정 형상이며 실제 Go2 층간 주행은 별도로 검증해야 한다.
 
 ## 공식 사진 기반 외관
 
@@ -56,7 +62,13 @@ bash scripts/open_world.sh
 
 복도 양옆을 건물 폭으로 연결하고 붉은 벽돌 외벽, 흰색 수평 띠장, 반복 창호, 단부 수직 유리창, 평지붕·파라펫·E10 표지와 출입구 캐노피를 추가했다. 기존 계단실과 화분 공간은 이 건물 외피 안에 들어간다. 원래의 복도·계단 치수와 실내 충돌 형상은 유지한다.
 
-외관 치수와 사진에 보이지 않는 후면은 추정이다. 다른 층은 외관용 형상이며 실제 다층 주행 환경으로 검증한 것이 아니다. 외관 설정은 [exterior.json](worlds/cbnu_e10/config/exterior.json), 근거는 [외관 조사·구현 기록](docs/3_official_photo_exterior.md)에 있다.
+외관 치수와 사진에 보이지 않는 후면은 추정이다. 외관 설정은 [exterior.json](worlds/cbnu_e10/config/exterior.json), 근거는 [외관 조사·구현 기록](docs/3_official_photo_exterior.md)에 있다. 이후 추가한 6층 내부·조명·문 상부 수정은 [최신 변경 기록](docs/5_six_floor_lighting_and_doors.md)에 정리했다.
+
+## 모든 공간의 조명
+
+월드에는 활성 광원 **336개**가 있다. 방 구획 102곳에 천장 패널등 180개, 복도·화분 공간·엘리베이터 앞에 90개, 계단에 64개, 외부 태양광과 환경광 2개를 배치했다. 문과 구획벽을 통과하는 빛에 의존하지 않고 각 방 안에 광원을 둔다. 계단은 입구·상승·하강·중간참의 벽등으로 비춘다.
+
+밝기는 [lighting.json](worlds/cbnu_e10/config/lighting.json)에서 조절한다. 수치는 USD 조명 강도이며 실측 조도(lux)가 아니다. 기존 카메라 노출을 유지한 렌더로 밝기를 확인한다.
 
 ## 영상에서 반영한 구성
 
@@ -69,9 +81,9 @@ bash scripts/open_world.sh
 
 소품과 재질은 단순화한 절차적 형상이다. 방 이름이나 안내판의 판독되지 않은 문구는 복제하지 않았다. 유리는 불투명한 반사 재질로 표현했고 문·엘리베이터는 정적이다. 식물의 잎은 시각 형상이며 화분과 줄기에 충돌이 있다.
 
-문짝 32개의 창에는 실제 개구부가 있다. 유리는 문 표면보다 **35.5mm**, 창틀은 **9.5mm** 들어가며 유리 뒤를 막는 문짝 면을 제거했다. 큰 유리문 분할대도 안쪽에 들어간다. [문 창문 음각 변경](docs/4_recessed_door_windows.md)
+6개 층 문짝 **192개**의 창에는 실제 개구부가 있다. 유리는 문 표면보다 **35.5mm**, 창틀은 **9.5mm** 들어가며 유리 뒤를 막는 문짝 면을 제거했다. 큰 유리문 분할대도 안쪽에 들어간다. 문짝 높이를 **2.26m**로 늘려 상부 프레임 하단까지 채우고 기존 상부 유리 구간을 없앴다. 문 위 열린 틈은 0개다. [음각 처리 기록](docs/4_recessed_door_windows.md) · [문 상부 수정](docs/5_six_floor_lighting_and_doors.md)
 
-화분은 잎 끝까지 벽면에서 최소 8cm 여유를 두었고, 창틀·가드·엘리베이터 마감·소화전도 안쪽으로 정렬했다. 소품의 실제 형상 316개에 대해 복도와 화분 공간 내부 경계를 검사하여 벽 밖 돌출 0개를 확인했다. [정리 기록](docs/2_camera_removal_fixture_containment.md)
+화분은 잎 끝까지 벽면에서 최소 8cm 여유를 두었고, 창틀·가드·엘리베이터 마감·소화전도 안쪽으로 정렬했다. 번호판을 포함한 6개 층 소품 형상 **1,908개**에 대해 복도와 화분 공간 내부 경계를 검사하여 벽 밖 돌출 0개를 확인했다. [정리 기록](docs/2_camera_removal_fixture_containment.md)
 
 | 실제 Isaac Sim 미리보기 | 파일 |
 | --- | --- |
@@ -84,6 +96,12 @@ bash scripts/open_world.sh
 | 화분 공간 | [PlantAlcove.png](outputs/preview/PlantAlcove.png) |
 | 돌아보는 복도 | [Return.png](outputs/preview/Return.png) |
 | 천장을 숨긴 전체 구조 | [Overview.png](outputs/preview/Overview.png) |
+| 외벽을 숨긴 6층 내부 | [AllFloors.png](outputs/preview/AllFloors.png) |
+| 문 뒤 앞쪽 방 / 뒤쪽 방 | [RoomFront.png](outputs/preview/RoomFront.png) · [RoomRear.png](outputs/preview/RoomRear.png) |
+| 1층 / 6층 복도 | [CorridorLevel1.png](outputs/preview/CorridorLevel1.png) · [CorridorLevel6.png](outputs/preview/CorridorLevel6.png) |
+| 1층 / 6층 방 조명 | [LightingLevel1.png](outputs/preview/LightingLevel1.png) · [LightingLevel6.png](outputs/preview/LightingLevel6.png) |
+| 양 끝 계단 하강 방향 | [StairDownStart.png](outputs/preview/StairDownStart.png) · [StairDownFar.png](outputs/preview/StairDownFar.png) |
+| 엘리베이터 옆 층 번호판 | [1층](outputs/preview/ElevatorLevel1.png) · [3층](outputs/preview/ElevatorLevel3.png) · [6층](outputs/preview/ElevatorLevel6.png) |
 
 ## 물리와 좌표
 
@@ -92,6 +110,8 @@ bash scripts/open_world.sh
 복도 2.10m는 벽면 기준이며 걸레받이·손잡이·소화기 등은 벽 앞에 돌출된다. 중앙 **폭 1.30m, z=0.15–2.00m** 범위의 통행 공간과 계단 중심선 위 2m 여유를 검사했다.
 
 `/World/SpawnPoints`는 로봇을 배치할 기준 Xform이며 로봇 자체는 포함하지 않는다.
+
+기존 `/World/Floor`, `/World/Doors` 등의 경로는 3층 원본이다. 다른 층은 `/World/Levels/Level_N` 아래에서 이를 내부 참조하므로 같은 형상을 유지한다. 해당 층의 `SpawnPoints`에는 층 높이가 적용된다.
 
 | Spawn | 위치 (x, y, z), m | 방향 |
 | --- | --- | --- |
@@ -115,18 +135,24 @@ bash scripts/render_headless.sh
 
 2026-11-09 KST 확인:
 
-- USD 합성, 4개 제공 치수, 52개 디딤판과 끝참, 통행 공간, 계단 머리 위 여유, 재질·상대경로 의존성, 카메라 제거·소품 경계·문 음각·외피: **정적 검사 74개 PASS**.
-- Isaac Sim 실제 Stage 렌더: **9개 시점 저장**.
-- 복도·화분 공간 및 양 계단 상승/하강의 1·7·13단: **구체 낙하 14개 + PhysX raycast 14개 PASS**.
+- USD 합성, 제공 치수, 6층 복도·문·방 조명, 문 상부 틈, 계단·층간 연결, 통행 공간, 2m 머리 위 여유, 재질·의존성, 카메라 제거·소품 경계: **정적 검사 95개 PASS**.
+- Isaac Sim 실제 Stage 렌더: **26개 시점 저장**. 6개 층의 복도·방을 포함한다.
+- 번호판 추가 후에는 1–6층 엘리베이터와 복도에서 **7개 시점을 재촬영**하고 층별 번호·텍스처 연결을 확인했다. 신규 시점 6개를 합쳐 미리보기 파일은 32개다.
+- 각 층 복도·양쪽 방, 중간참 연결 10곳, 3층 계단 대표 디딤판과 화분 공간: **구체 낙하 42개 + PhysX raycast 42개 PASS**.
+- 위 PhysX 결과는 번호판 추가 전 검증이다. 번호판 추가 후 모든 충돌 형상·변환·물리 재질·중력 설정의 해시가 동일함을 확인하여 물리 실험을 반복하지 않았다.
 - **Go2 보행·계단 등반 정책은 실행하지 않았다.** 위 검증은 월드 형상과 물리 지지면에 대한 확인이다.
 
 근거: [정적 검사 JSON](outputs/validation/static_validation.json), [렌더·PhysX 검사 JSON](outputs/preview/capture_status.json), [소품 경계 검사 JSON](outputs/validation/containment_validation.json), [생성 manifest](worlds/cbnu_e10/build_manifest.json). 정적·PhysX 보고서에는 검사한 Stage의 SHA-256을 기록한다. 런타임 로그는 `outputs/runtime/isaac_capture.log`에 저장된다.
+
+최신 번호판 변경 근거: [번호 확인](outputs/validation/floor_marker_validation.json), [7시점 렌더](outputs/preview/render_refresh.json), [물리 형상 불변 비교](outputs/validation/floor_marker_physics_comparison.json).
 
 ## 근거와 변경 기록
 
 - [영상 검토 및 구현 기록](docs/1_cbnu_e10_world.md)
 - [카메라 제거와 소품 정렬](docs/2_camera_removal_fixture_containment.md)
 - [공식 사진 기반 외관](docs/3_official_photo_exterior.md) · [문 창문 음각](docs/4_recessed_door_windows.md)
+- [6개 층 내부·전체 공간 조명·문 상부 마감](docs/5_six_floor_lighting_and_doors.md)
+- [엘리베이터 옆 층 번호판](docs/6_elevator_floor_markers.md)
 - [원본 영상](/home/a/Downloads/CBNU-E10.mp4): 81.60초, 저장 해상도 1920×1080 / 회전 적용 표시 1080×1920, 평균 약 29.97fps.
 - [2초 간격 추출 프레임](reference): 총 41개. `python3 -B scripts/extract_reference.py`로 재생성한다.
 - 원본 영상은 다운로드 폴더에 보존하며 저장소·Obsidian에 복사하지 않았다.

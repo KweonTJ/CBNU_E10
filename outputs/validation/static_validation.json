@@ -1,8 +1,8 @@
 {
   "success": true,
-  "stage_sha256": "2b224d16731f8515a00e488d5842d4098f2b1b38b1e23e1fbe3aba4724b3851f",
-  "check_count": 74,
-  "colliders": 2598,
+  "stage_sha256": "74c2ad0a30cac081cac0cfd17ecb8170760201be875874e30ce1693300168142",
+  "check_count": 95,
+  "colliders": 5116,
   "checks": [
     {
       "check": "Z-up, meter units, default World",
@@ -354,7 +354,7 @@
       "passed": true,
       "details": {
         "success": true,
-        "geometry_count": 316,
+        "geometry_count": 1908,
         "tolerance_m": 0.001,
         "interior_rectangles_xy": [
           [
@@ -374,16 +374,21 @@
       }
     },
     {
-      "check": "All 32 door windows and their frames are recessed into the leaf",
+      "check": "All door windows and their frames are recessed into the leaf",
       "passed": true,
       "details": {
-        "window_count": 32,
+        "window_count": 192,
         "glass_recess_m": 0.0355,
         "frame_recess_m": 0.0095
       }
     },
     {
       "check": "Door window apertures contain no solid door backing",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "Every door leaf reaches the header with no top gap",
       "passed": true,
       "details": []
     },
@@ -396,6 +401,115 @@
       "check": "Unified exterior foundation surrounds corridor and stair bays",
       "passed": true,
       "details": null
+    },
+    {
+      "check": "Every level has active local lights",
+      "passed": true,
+      "details": {
+        "Level_3": 30,
+        "Level_1": 30,
+        "Level_2": 30,
+        "Level_4": 30,
+        "Level_5": 30,
+        "Level_6": 30
+      }
+    },
+    {
+      "check": "New lights are outside solid walls, floors and ceilings",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "Every enclosed room has its own ceiling lights",
+      "passed": true,
+      "details": {
+        "rooms": 102
+      }
+    },
+    {
+      "check": "Level 1 repeats the measured corridor and all doors",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Level 2 repeats the measured corridor and all doors",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Level 3 repeats the measured corridor and all doors",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Level 4 repeats the measured corridor and all doors",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Level 5 repeats the measured corridor and all doors",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Level 6 repeats the measured corridor and all doors",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Half landing 1-2 Start is continuous",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Half landing 1-2 Far is continuous",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Half landing 2-3 Start is continuous",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Half landing 2-3 Far is continuous",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Half landing 3-4 Start is continuous",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Half landing 3-4 Far is continuous",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Half landing 4-5 Start is continuous",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Half landing 4-5 Far is continuous",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Half landing 5-6 Start is continuous",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Half landing 5-6 Far is continuous",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "All ten half-landings have clear crossing space and 2 m headroom",
+      "passed": true,
+      "details": []
     }
   ]
 }

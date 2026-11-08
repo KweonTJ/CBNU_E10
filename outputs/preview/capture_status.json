@@ -1,19 +1,36 @@
 {
   "success": true,
   "state": "complete",
-  "pid": 22505,
-  "started_utc": "2026-11-08T16:43:01.951491+00:00",
-  "stage_sha256": "2b224d16731f8515a00e488d5842d4098f2b1b38b1e23e1fbe3aba4724b3851f",
+  "pid": 37236,
+  "started_utc": "2026-11-08T17:03:48.322086+00:00",
+  "stage_sha256": "fec3a153cdf1544912344f105a8a241156ec56d94628a3fff989d215dcd3be08",
   "renders": [
     "ExteriorFront",
     "ExteriorRear",
     "Corridor",
-    "DoorRecess",
     "StartStairs",
     "FarLobby",
     "PlantAlcove",
     "Return",
-    "Overview"
+    "Overview",
+    "DoorRecess",
+    "RoomFront",
+    "RoomRear",
+    "AllFloors",
+    "LightingLevel1",
+    "CorridorLevel1",
+    "LightingLevel2",
+    "CorridorLevel2",
+    "LightingLevel3",
+    "CorridorLevel3",
+    "LightingLevel4",
+    "CorridorLevel4",
+    "LightingLevel5",
+    "CorridorLevel5",
+    "LightingLevel6",
+    "CorridorLevel6",
+    "StairDownStart",
+    "StairDownFar"
   ],
   "physics_checks": [
     {
@@ -28,6 +45,202 @@
       "expected_center_z": 0.055,
       "actual_center_z": 0.05499999597668648,
       "error_m": 4.023313522616423e-09,
+      "passed": true
+    },
+    {
+      "name": "drop_Level1_Corridor",
+      "expected_center_z": -8.265,
+      "actual_center_z": -8.265000343322754,
+      "error_m": 3.433227533378158e-07,
+      "passed": true
+    },
+    {
+      "name": "drop_Level1_RoomFront",
+      "expected_center_z": -8.265,
+      "actual_center_z": -8.265000343322754,
+      "error_m": 3.433227533378158e-07,
+      "passed": true
+    },
+    {
+      "name": "drop_Level1_RoomRear",
+      "expected_center_z": -8.265,
+      "actual_center_z": -8.265000343322754,
+      "error_m": 3.433227533378158e-07,
+      "passed": true
+    },
+    {
+      "name": "drop_Level2_Corridor",
+      "expected_center_z": -4.105,
+      "actual_center_z": -4.105000019073486,
+      "error_m": 1.907348590179936e-08,
+      "passed": true
+    },
+    {
+      "name": "drop_Level2_RoomFront",
+      "expected_center_z": -4.105,
+      "actual_center_z": -4.105000019073486,
+      "error_m": 1.907348590179936e-08,
+      "passed": true
+    },
+    {
+      "name": "drop_Level2_RoomRear",
+      "expected_center_z": -4.105,
+      "actual_center_z": -4.105000019073486,
+      "error_m": 1.907348590179936e-08,
+      "passed": true
+    },
+    {
+      "name": "drop_Level3_Corridor",
+      "expected_center_z": 0.055,
+      "actual_center_z": 0.05499999597668648,
+      "error_m": 4.023313522616423e-09,
+      "passed": true
+    },
+    {
+      "name": "drop_Level3_RoomFront",
+      "expected_center_z": 0.055,
+      "actual_center_z": 0.05499999597668648,
+      "error_m": 4.023313522616423e-09,
+      "passed": true
+    },
+    {
+      "name": "drop_Level3_RoomRear",
+      "expected_center_z": 0.055,
+      "actual_center_z": 0.05499999597668648,
+      "error_m": 4.023313522616423e-09,
+      "passed": true
+    },
+    {
+      "name": "drop_Level4_Corridor",
+      "expected_center_z": 4.215,
+      "actual_center_z": 4.214999675750732,
+      "error_m": 3.2424926743601645e-07,
+      "passed": true
+    },
+    {
+      "name": "drop_Level4_RoomFront",
+      "expected_center_z": 4.215,
+      "actual_center_z": 4.214999675750732,
+      "error_m": 3.2424926743601645e-07,
+      "passed": true
+    },
+    {
+      "name": "drop_Level4_RoomRear",
+      "expected_center_z": 4.215,
+      "actual_center_z": 4.214999675750732,
+      "error_m": 3.2424926743601645e-07,
+      "passed": true
+    },
+    {
+      "name": "drop_Level5_Corridor",
+      "expected_center_z": 8.375,
+      "actual_center_z": 8.374999046325684,
+      "error_m": 9.5367431640625e-07,
+      "passed": true
+    },
+    {
+      "name": "drop_Level5_RoomFront",
+      "expected_center_z": 8.375,
+      "actual_center_z": 8.374999046325684,
+      "error_m": 9.5367431640625e-07,
+      "passed": true
+    },
+    {
+      "name": "drop_Level5_RoomRear",
+      "expected_center_z": 8.375,
+      "actual_center_z": 8.374999046325684,
+      "error_m": 9.5367431640625e-07,
+      "passed": true
+    },
+    {
+      "name": "drop_Level6_Corridor",
+      "expected_center_z": 12.535,
+      "actual_center_z": 12.534998893737793,
+      "error_m": 1.1062622071733585e-06,
+      "passed": true
+    },
+    {
+      "name": "drop_Level6_RoomFront",
+      "expected_center_z": 12.535,
+      "actual_center_z": 12.534998893737793,
+      "error_m": 1.1062622071733585e-06,
+      "passed": true
+    },
+    {
+      "name": "drop_Level6_RoomRear",
+      "expected_center_z": 12.535,
+      "actual_center_z": 12.534998893737793,
+      "error_m": 1.1062622071733585e-06,
+      "passed": true
+    },
+    {
+      "name": "drop_Bridge_1_Start",
+      "expected_center_z": -6.1850000000000005,
+      "actual_center_z": -6.185000419616699,
+      "error_m": 4.196166987213701e-07,
+      "passed": true
+    },
+    {
+      "name": "drop_Bridge_1_Far",
+      "expected_center_z": -6.1850000000000005,
+      "actual_center_z": -6.185000419616699,
+      "error_m": 4.196166987213701e-07,
+      "passed": true
+    },
+    {
+      "name": "drop_Bridge_2_Start",
+      "expected_center_z": -2.025,
+      "actual_center_z": -2.0250000953674316,
+      "error_m": 9.536743172944284e-08,
+      "passed": true
+    },
+    {
+      "name": "drop_Bridge_2_Far",
+      "expected_center_z": -2.025,
+      "actual_center_z": -2.0250000953674316,
+      "error_m": 9.536743172944284e-08,
+      "passed": true
+    },
+    {
+      "name": "drop_Bridge_3_Start",
+      "expected_center_z": 2.1350000000000002,
+      "actual_center_z": 2.134999990463257,
+      "error_m": 9.536743394988889e-09,
+      "passed": true
+    },
+    {
+      "name": "drop_Bridge_3_Far",
+      "expected_center_z": 2.1350000000000002,
+      "actual_center_z": 2.134999990463257,
+      "error_m": 9.536743394988889e-09,
+      "passed": true
+    },
+    {
+      "name": "drop_Bridge_4_Start",
+      "expected_center_z": 6.295,
+      "actual_center_z": 6.294999599456787,
+      "error_m": 4.005432128195707e-07,
+      "passed": true
+    },
+    {
+      "name": "drop_Bridge_4_Far",
+      "expected_center_z": 6.295,
+      "actual_center_z": 6.294999599456787,
+      "error_m": 4.005432128195707e-07,
+      "passed": true
+    },
+    {
+      "name": "drop_Bridge_5_Start",
+      "expected_center_z": 10.455,
+      "actual_center_z": 10.454998970031738,
+      "error_m": 1.0299682617898043e-06,
+      "passed": true
+    },
+    {
+      "name": "drop_Bridge_5_Far",
+      "expected_center_z": 10.455,
+      "actual_center_z": 10.454998970031738,
+      "error_m": 1.0299682617898043e-06,
       "passed": true
     },
     {
@@ -129,6 +342,202 @@
       "passed": true
     },
     {
+      "name": "ray_Level1_Corridor",
+      "expected_z": -8.32,
+      "actual_z": -8.319999694824219,
+      "collider": "/World/Levels/Level_1/Floor/Corridor/Slab",
+      "passed": true
+    },
+    {
+      "name": "ray_Level1_RoomFront",
+      "expected_z": -8.32,
+      "actual_z": -8.319999694824219,
+      "collider": "/World/Levels/Level_1/RoomWings/Floor_0_1",
+      "passed": true
+    },
+    {
+      "name": "ray_Level1_RoomRear",
+      "expected_z": -8.32,
+      "actual_z": -8.319999694824219,
+      "collider": "/World/Levels/Level_1/RoomWings/Floor_2_0",
+      "passed": true
+    },
+    {
+      "name": "ray_Level2_Corridor",
+      "expected_z": -4.16,
+      "actual_z": -4.159999847412109,
+      "collider": "/World/Levels/Level_2/Floor/Corridor/Slab",
+      "passed": true
+    },
+    {
+      "name": "ray_Level2_RoomFront",
+      "expected_z": -4.16,
+      "actual_z": -4.159999847412109,
+      "collider": "/World/Levels/Level_2/RoomWings/Floor_0_1",
+      "passed": true
+    },
+    {
+      "name": "ray_Level2_RoomRear",
+      "expected_z": -4.16,
+      "actual_z": -4.159999847412109,
+      "collider": "/World/Levels/Level_2/RoomWings/Floor_2_0",
+      "passed": true
+    },
+    {
+      "name": "ray_Level3_Corridor",
+      "expected_z": 0.0,
+      "actual_z": 0.0,
+      "collider": "/World/Floor/Corridor/Slab",
+      "passed": true
+    },
+    {
+      "name": "ray_Level3_RoomFront",
+      "expected_z": 0.0,
+      "actual_z": 0.0,
+      "collider": "/World/Exterior/RoomWings/Floor_0_1",
+      "passed": true
+    },
+    {
+      "name": "ray_Level3_RoomRear",
+      "expected_z": 0.0,
+      "actual_z": 0.0,
+      "collider": "/World/Exterior/RoomWings/Floor_2_0",
+      "passed": true
+    },
+    {
+      "name": "ray_Level4_Corridor",
+      "expected_z": 4.16,
+      "actual_z": 4.159999847412109,
+      "collider": "/World/Levels/Level_4/Floor/Corridor/Slab",
+      "passed": true
+    },
+    {
+      "name": "ray_Level4_RoomFront",
+      "expected_z": 4.16,
+      "actual_z": 4.159999847412109,
+      "collider": "/World/Levels/Level_4/RoomWings/Floor_0_1",
+      "passed": true
+    },
+    {
+      "name": "ray_Level4_RoomRear",
+      "expected_z": 4.16,
+      "actual_z": 4.159999847412109,
+      "collider": "/World/Levels/Level_4/RoomWings/Floor_2_0",
+      "passed": true
+    },
+    {
+      "name": "ray_Level5_Corridor",
+      "expected_z": 8.32,
+      "actual_z": 8.319999694824219,
+      "collider": "/World/Levels/Level_5/Floor/Corridor/Slab",
+      "passed": true
+    },
+    {
+      "name": "ray_Level5_RoomFront",
+      "expected_z": 8.32,
+      "actual_z": 8.319999694824219,
+      "collider": "/World/Levels/Level_5/RoomWings/Floor_0_1",
+      "passed": true
+    },
+    {
+      "name": "ray_Level5_RoomRear",
+      "expected_z": 8.32,
+      "actual_z": 8.319999694824219,
+      "collider": "/World/Levels/Level_5/RoomWings/Floor_2_0",
+      "passed": true
+    },
+    {
+      "name": "ray_Level6_Corridor",
+      "expected_z": 12.48,
+      "actual_z": 12.479999542236328,
+      "collider": "/World/Levels/Level_6/Floor/Corridor/Slab",
+      "passed": true
+    },
+    {
+      "name": "ray_Level6_RoomFront",
+      "expected_z": 12.48,
+      "actual_z": 12.479999542236328,
+      "collider": "/World/Levels/Level_6/RoomWings/Floor_0_1",
+      "passed": true
+    },
+    {
+      "name": "ray_Level6_RoomRear",
+      "expected_z": 12.48,
+      "actual_z": 12.479999542236328,
+      "collider": "/World/Levels/Level_6/RoomWings/Floor_2_0",
+      "passed": true
+    },
+    {
+      "name": "ray_Bridge_1_Start",
+      "expected_z": -6.24,
+      "actual_z": -6.240000247955322,
+      "collider": "/World/Levels/Level_1/Stairs/Start/HalfLandingBridge",
+      "passed": true
+    },
+    {
+      "name": "ray_Bridge_1_Far",
+      "expected_z": -6.24,
+      "actual_z": -6.240000247955322,
+      "collider": "/World/Levels/Level_1/Stairs/Far/HalfLandingBridge",
+      "passed": true
+    },
+    {
+      "name": "ray_Bridge_2_Start",
+      "expected_z": -2.08,
+      "actual_z": -2.080000162124634,
+      "collider": "/World/Levels/Level_2/Stairs/Start/HalfLandingBridge",
+      "passed": true
+    },
+    {
+      "name": "ray_Bridge_2_Far",
+      "expected_z": -2.08,
+      "actual_z": -2.080000162124634,
+      "collider": "/World/Levels/Level_2/Stairs/Far/HalfLandingBridge",
+      "passed": true
+    },
+    {
+      "name": "ray_Bridge_3_Start",
+      "expected_z": 2.08,
+      "actual_z": 2.0799999237060547,
+      "collider": "/World/Stairs/Start/HalfLandingBridge",
+      "passed": true
+    },
+    {
+      "name": "ray_Bridge_3_Far",
+      "expected_z": 2.08,
+      "actual_z": 2.0799999237060547,
+      "collider": "/World/Stairs/Far/HalfLandingBridge",
+      "passed": true
+    },
+    {
+      "name": "ray_Bridge_4_Start",
+      "expected_z": 6.24,
+      "actual_z": 6.239999771118164,
+      "collider": "/World/Levels/Level_4/Stairs/Start/HalfLandingBridge",
+      "passed": true
+    },
+    {
+      "name": "ray_Bridge_4_Far",
+      "expected_z": 6.24,
+      "actual_z": 6.239999771118164,
+      "collider": "/World/Levels/Level_4/Stairs/Far/HalfLandingBridge",
+      "passed": true
+    },
+    {
+      "name": "ray_Bridge_5_Start",
+      "expected_z": 10.4,
+      "actual_z": 10.399999618530273,
+      "collider": "/World/Levels/Level_5/Stairs/Start/HalfLandingBridge",
+      "passed": true
+    },
+    {
+      "name": "ray_Bridge_5_Far",
+      "expected_z": 10.4,
+      "actual_z": 10.399999618530273,
+      "collider": "/World/Levels/Level_5/Stairs/Far/HalfLandingBridge",
+      "passed": true
+    },
+    {
       "name": "ray_Start_Up_01",
       "expected_z": 0.16,
       "actual_z": 0.1599999964237213,
@@ -213,5 +622,5 @@
       "passed": true
     }
   ],
-  "finished_utc": "2026-11-08T16:43:15.792817+00:00"
+  "finished_utc": "2026-11-08T17:04:30.408308+00:00"
 }

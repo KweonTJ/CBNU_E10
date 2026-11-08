@@ -47,20 +47,33 @@ def main():
     draw.text((40,5),'E10',font=font,fill=(242,240,224,255))
     picture.save(OUT/'building_sign.png')
     font_path = '/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf'
-    picture = Image.new('RGB', (512, 768), (220, 223, 220))
-    draw = ImageDraw.Draw(picture)
-    draw.rectangle((0, 0, 511, 145), fill=(23, 64, 105))
-    font = ImageFont.truetype(font_path, 45)
-    draw.text((28, 30), 'E10   3F', fill='white', font=font)
-    for i in range(12):
-        y = 180 + i * 44
-        draw.rectangle((25, y, 72, y + 23), fill=(63, 77, 88))
-        draw.rectangle((90, y + 6, 460, y + 15), fill=(118, 125, 127))
-    picture.save(OUT / 'directory.png')
+    korean_fonts = list(Path('/usr/share/fonts').rglob('*CJK*'))
+    for level in range(1, 7):
+        picture = Image.new('RGB', (512, 768), (220, 223, 220))
+        draw = ImageDraw.Draw(picture)
+        draw.rectangle((0, 0, 511, 145), fill=(23, 64, 105))
+        font = ImageFont.truetype(font_path, 45)
+        draw.text((28, 30), f'E10   {level}F', fill='white', font=font)
+        for i in range(12):
+            y = 180 + i * 44
+            draw.rectangle((25, y, 72, y + 23), fill=(63, 77, 88))
+            draw.rectangle((90, y + 6, 460, y + 15), fill=(118, 125, 127))
+        picture.save(OUT / ('directory.png' if level==3 else f'directory_{level}.png'))
+        # Large, high-contrast wayfinding plaque beside each elevator.
+        plaque = Image.new('RGB', (560, 740), '#142b42')
+        pen = ImageDraw.Draw(plaque)
+        pen.text((280, 72), 'E10', anchor='mm', fill='#b9cddd',
+                 font=ImageFont.truetype(font_path, 56))
+        pen.text((280, 322), f'{level}F', anchor='mm', fill='#ffffff',
+                 font=ImageFont.truetype(font_path, 278))
+        pen.line((70, 515, 490, 515), fill='#7e9eb6', width=3)
+        label_font = ImageFont.truetype(str(korean_fonts[0]), 86) if korean_fonts else ImageFont.truetype(font_path, 64)
+        pen.text((280, 614), f'{level}층' if korean_fonts else f'FLOOR {level}',
+                 anchor='mm', fill='#ffffff', font=label_font)
+        plaque.save(OUT / f'floor_marker_{level}.png')
     picture = Image.new('RGB', (512, 768), '#f1f0df')
     draw = ImageDraw.Draw(picture)
     draw.rectangle((10, 10, 501, 757), outline='#185775', width=15)
-    korean_fonts = list(Path('/usr/share/fonts').rglob('*CJK*'))
     if korean_fonts:
         font = ImageFont.truetype(str(korean_fonts[0]), 158)
         draw.text((75, 65), '정숙', fill='#a92731', font=font)
