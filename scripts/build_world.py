@@ -7,6 +7,7 @@ import random
 from pathlib import Path
 
 from pxr import Gf, Sdf, Usd, UsdGeom, UsdLux, UsdPhysics, UsdShade
+from build_exterior import build_exterior
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'worlds' / 'cbnu_e10'
@@ -38,6 +39,16 @@ PALETTE = {
     'Pot': ((.13, .095, .06), .6, 0),
     'WarmGlow': ((1, .65, .28), .4, 0),
     'CoolGlow': ((.95, .97, 1), .4, 0),
+    'Brick': ((.38, .16, .10), .88, 0),
+    'BrickBase': ((.36, .16, .11), .88, 0),
+    'BrickAccent': ((.46, .21, .12), .75, 0),
+    'Limestone': ((.78, .78, .71), .68, 0),
+    'Concrete': ((.48, .49, .47), .78, 0),
+    'Roof': ((.20, .24, .22), .85, 0),
+    'FacadeGlass': ((.055, .22, .29), .18, .55),
+    'Aluminum': ((.64, .68, .68), .28, .72),
+    'SitePaving': ((.29, .31, .31), .9, 0),
+    'BuildingSign': ((.9, .9, .85), .5, 0),
 }
 
 
@@ -57,9 +68,10 @@ class Builder:
         world.CreateAttribute('e10:sourceVideo', Sdf.ValueTypeNames.String).Set(config['source_video'])
         for key, value in self.m.items():
             world.CreateAttribute('e10:' + key, Sdf.ValueTypeNames.Double).Set(value)
-        for name in ['Looks', 'Floor', 'Walls', 'Ceilings', 'Doors', 'Fixtures', 'Stairs', 'Lights', 'Cameras', 'SpawnPoints']:
+        for name in ['Looks', 'Floor', 'Walls', 'Ceilings', 'Doors', 'Fixtures', 'Stairs', 'Lights', 'SpawnPoints']:
             UsdGeom.Xform.Define(self.stage, '/World/' + name)
         self.materials = {}
+        self.containment_adjustments = []
         self.make_materials()
         physics = UsdPhysics.Scene.Define(self.stage, '/World/PhysicsScene')
         physics.CreateGravityDirectionAttr(Gf.Vec3f(0, 0, -1))
@@ -70,12 +82,11 @@ class Builder:
         self.stage.GetRootLayer().customLayerData = {
             'generator': 'scripts/build_world.py',
             'config_sha256': hashlib.sha256(CONFIG.read_bytes()).hexdigest(),
-            'cameraSettings': {'Perspective': {'position': Gf.Vec3d(4.4, 0, 1.6), 'target': Gf.Vec3d(16, 0, 1.45)}},
         }
 
     def make_materials(self):
         textures = {'FloorCream': 'terrazzo_cream', 'FloorGreen': 'terrazzo_green', 'Ceiling': 'ceiling',
-                    'Directory': 'directory', 'QuietSign': 'quiet'}
+                    'Directory': 'directory', 'QuietSign': 'quiet', 'Brick': 'brick', 'BuildingSign': 'building_sign'}
         for name in [*PALETTE, 'Directory', 'QuietSign']:
             color, rough, metallic = PALETTE.get(name, ((.8, .8, .8), .7, 0))
             path = '/World/Looks/' + name
@@ -105,6 +116,10 @@ class Builder:
                 tex.CreateInput('st', Sdf.ValueTypeNames.Float2).ConnectToSource(reader.ConnectableAPI(), 'result')
                 tex.CreateOutput('rgb', Sdf.ValueTypeNames.Float3)
                 shader.GetInput('diffuseColor').ConnectToSource(tex.ConnectableAPI(), 'rgb')
+                if name == 'BuildingSign':
+                    tex.CreateOutput('a', Sdf.ValueTypeNames.Float)
+                    shader.CreateInput('opacity', Sdf.ValueTypeNames.Float).ConnectToSource(tex.ConnectableAPI(), 'a')
+                    shader.CreateInput('opacityThreshold', Sdf.ValueTypeNames.Float).Set(.5)
             material_physics = UsdPhysics.MaterialAPI.Apply(mat.GetPrim())
             material_physics.CreateStaticFrictionAttr(.8)
             material_physics.CreateDynamicFrictionAttr(.65)
@@ -239,14 +254,28 @@ class Builder:
         self.box(p+'/Transom', (0, .07, 2.20), (width, .05, .16), 'DarkGlass')
         for i, sign in enumerate([-1, 1]):
             cx, lw = sign*width/4, width/2-.006
-            # Structural door remains solid. Narrow dark panes are visual glazing.
-            self.box(p+f'/Leaf_{i}', (cx, .035, height/2), (lw, .055, height), color)
             glass_width = lw*.38 if style!='glazed' else lw*.78
-            self.box(p+f'/GlassFrame_{i}', (cx, .003, 1.46), (glass_width+.035, .02, .96), 'Metal', False)
-            self.box(p+f'/Glass_{i}', (cx, -.009, 1.46), (glass_width, .009, .92), 'DarkGlass', False)
+            opening_w = glass_width+.04
+            opening_h = .96 if style!='glazed' else 1.70
+            opening_z = 1.46 if style!='glazed' else 1.15
+            bottom, top = opening_z-opening_h/2, opening_z+opening_h/2
+            leaf = p+f'/Leaf_{i}'
+            self.group(leaf)
+            # Four solid parts make an actual aperture. The front is local y=.0075.
+            for label, sign_x in [('Left', -1), ('Right', 1)]:
+                side_width = (lw-opening_w)/2
+                self.box(leaf+'/'+label, (cx+sign_x*(opening_w/2+side_width/2), .035, height/2), (side_width,.055,height), color)
+            self.box(leaf+'/BelowWindow', (cx,.035,bottom/2), (opening_w,.055,bottom), color)
+            self.box(leaf+'/AboveWindow', (cx,.035,(top+height)/2), (opening_w,.055,height-top), color)
+            # Rebate and pane both lie behind the door front; no overlay glass plate.
+            for label, sign_x in [('Left', -1), ('Right', 1)]:
+                self.box(p+f'/GlassFrame_{i}_{label}', (cx+sign_x*(opening_w/2-.012),.029,opening_z), (.024,.024,opening_h), 'Metal', False)
+            for label, zz in [('Bottom', bottom+.012), ('Top', top-.012)]:
+                self.box(p+f'/GlassFrame_{i}_{label}', (cx,.029,zz), (opening_w,.024,.024), 'Metal', False)
+            self.box(p+f'/Glass_{i}', (cx,.047,opening_z), (opening_w-.048,.008,opening_h-.048), 'DarkGlass')
             if style == 'glazed':
                 for h in [.55, .95, 1.35, 1.75]:
-                    self.box(p+f'/Mullion_{i}_{int(h*100)}', (cx, -.018, h), (lw, .02, .027), 'Teal', False)
+                    self.box(p+f'/Mullion_{i}_{int(h*100)}', (cx, .029, h), (opening_w-.048, .024, .027), 'Teal', False)
             self.cylinder(p+f'/Lock_{i}', (sign*.075, -.035, .95), .032, .035, 'Metal', False)
             self.box(p+f'/Handle_{i}', (sign*.12, -.055, .95), (.11, .03, .022), 'Metal', False)
         self.box(p+'/RoomPlate', (-width/2-.14, -.008, 1.6), (.16, .02, .10), 'Blue', False)
@@ -330,14 +359,14 @@ class Builder:
 
     def end_window(self, name, x):
         p = '/World/Fixtures/' + name
-        self.group(p, (x, 0, 0), 90)
-        self.box(p+'/Back', (0, .04, 1.25), (self.w, .10, 2.5), 'WindowGlass')
+        self.group(p, (x, 0, 0), 90 if x==self.length else -90)
+        self.box(p+'/Back', (0, .06, 1.25), (self.w, .10, 2.5), 'WindowGlass')
         for side in [-1, 1]:
-            self.box(p+f'/Jamb_{side+1}', (side*(self.w/2-.04), -.015, 1.25), (.08, .10, 2.5), 'DoorWhite')
+            self.box(p+f'/Jamb_{side+1}', (side*(self.w/2-.04), .055, 1.25), (.08, .10, 2.5), 'DoorWhite')
         for z in [.08, .88, 2.4]:
-            self.box(p+f'/Cross_{int(z*100)}', (0, -.015, z), (self.w, .10, .06), 'DoorWhite')
-        self.box(p+'/Mullion', (0, -.015, 1.65), (.055, .10, 1.5), 'DoorWhite')
-        inward = .20 if x==self.length else -.20
+            self.box(p+f'/Cross_{int(z*100)}', (0, .055, z), (self.w, .10, .06), 'DoorWhite')
+        self.box(p+'/Mullion', (0, .055, 1.65), (.055, .10, 1.5), 'DoorWhite')
+        inward = .23
         for z in [.25, .50, .78, 1.0]:
             self.rod(p+f'/Guard_{int(z*100)}', (-self.w/2+.06, inward, z), (self.w/2-.06, inward, z), .022)
         for side in [-1, 1]:
@@ -362,6 +391,26 @@ class Builder:
             tangent = (-math.sin(angle)*width, math.cos(angle)*width, 0)
             pts = [start, tuple(mid[k]+tangent[k] for k in range(3)), tip, tuple(mid[k]-tangent[k] for k in range(3)), mid]
             self.mesh(p+f'/Leaf_{i:02}', pts, [[0, 1, 4], [1, 2, 4], [2, 3, 4], [3, 0, 4]], 'Leaf' if i%3 else 'LeafLight')
+        a, b = self.e['alcove_x_range']
+        self.contain_group(p, (a, b, -self.w/2-self.e['alcove_depth'], -self.w/2), .08)
+
+    def contain_group(self, path, rectangle, clearance):
+        """Move an entire fixture, including its visible leaves and colliders."""
+        prim = self.stage.GetPrimAtPath(path)
+        bounds = UsdGeom.BBoxCache(Usd.TimeCode.Default(), ['default']).ComputeWorldBound(prim).ComputeAlignedRange()
+        lo, hi = bounds.GetMin(), bounds.GetMax()
+        x0, x1, y0, y1 = rectangle
+        shifts = []
+        for axis, low, high in [(0, x0, x1), (1, y0, y1)]:
+            if hi[axis]-lo[axis] > high-low-2*clearance:
+                raise ValueError(f'Fixture cannot fit inside room: {path}')
+            shift = max(0.0, low+clearance-lo[axis])
+            shift = min(shift, high-clearance-hi[axis])
+            shifts.append(shift)
+        if any(abs(v)>1e-7 for v in shifts):
+            attr = prim.GetAttribute('xformOp:translate')
+            attr.Set(attr.Get()+Gf.Vec3d(shifts[0], shifts[1], 0))
+            self.containment_adjustments.append({'prim': path, 'translation_xy_m': shifts, 'wall_clearance_m': clearance})
 
     def lobby(self):
         a, b = self.e['alcove_x_range']
@@ -374,9 +423,9 @@ class Builder:
         self.box('/World/Walls/AlcoveRearLower', ((a+b)/2, y0-t/2, .46), (b-a, t, .92), 'Wall')
         self.box('/World/Walls/AlcoveRearGlass', ((a+b)/2, y0-t/2, 1.68), (b-a, .08, 1.52), 'WindowGlass')
         for x in [a+.05, a+1, a+2, b-.05]:
-            self.box('/World/Fixtures/AlcoveFrame_'+str(round(x*100)), (x, y0+.01, 1.7), (.05, .08, 1.6), 'Metal')
+            self.box('/World/Fixtures/AlcoveFrame_'+str(round(x*100)), (x, y0+.05, 1.7), (.05, .08, 1.6), 'Metal')
         for z in [.9, 2.45]:
-            self.box('/World/Fixtures/AlcoveFrameZ_'+str(int(z*100)), ((a+b)/2, y0+.01, z), (b-a, .08, .06), 'Metal')
+            self.box('/World/Fixtures/AlcoveFrameZ_'+str(int(z*100)), ((a+b)/2, y0+.05, z), (b-a, .08, .06), 'Metal')
         self.downlight('Alcove', (a+b)/2, (y0+y1)/2, intensity=2600)
         for i, (x, y, h) in enumerate([(a+.4,y0+.45,1.7),(a+1,y0+.55,1.45),(a+1.65,y0+.5,1.85),(b-.4,y0+1.0,1.4),(a+.9,y0+1.2,.65),(a+.3,y1-.5,.65)]):
             self.plant(f'Plant_{i:02}', x, y, h, 100+i)
@@ -389,29 +438,30 @@ class Builder:
         elevator_x = (b+self.length)/2
         p = '/World/Fixtures/Elevator'
         self.group(p, (elevator_x, -self.w/2, 0), 180)
-        self.box(p+'/WoodSurround', (0, .025, 1.25), (self.length-b-.12, .07, 2.5), 'WoodLight', False)
-        self.box(p+'/Frame', (0, -.035, 1.12), (1.55, .07, 2.24), 'Wood', False)
+        self.box(p+'/WoodSurround', (0, -.035, 1.25), (self.length-b-.12, .06, 2.5), 'WoodLight', False)
+        self.box(p+'/Frame', (0, -.09, 1.12), (1.55, .06, 2.24), 'Wood', False)
         for sign in [-1, 1]:
-            self.box(p+f'/Door_{sign+1}', (sign*.326, -.077, 1.05), (.646, .035, 2.1), 'Metal', False)
-        self.box(p+'/CallPanel', (.91, -.02, 1.12), (.08, .025, .23), 'Metal', False)
-        self.box(p+'/Display', (0, -.08, 2.19), (.26, .02, .09), 'Skirting', False)
-        self.box(p+'/DisplayLight', (0, -.095, 2.19), (.018, .01, .05), 'Red', False)
+            self.box(p+f'/Door_{sign+1}', (sign*.326, -.13, 1.05), (.646, .03, 2.1), 'Metal', False)
+        self.box(p+'/CallPanel', (.91, -.09, 1.12), (.08, .025, .23), 'Metal', False)
+        self.box(p+'/Display', (0, -.13, 2.19), (.26, .02, .09), 'Skirting', False)
+        self.box(p+'/DisplayLight', (0, -.145, 2.19), (.018, .01, .05), 'Red', False)
         for i, xx in enumerate([-.9, .9]):
-            self.box(p+f'/Sconce_{i}', (xx, -.10, 1.9), (.13, .12, .32), 'WarmGlow', False)
+            self.box(p+f'/Sconce_{i}', (xx, -.18, 1.9), (.13, .12, .32), 'WarmGlow', False)
         glow = UsdLux.RectLight.Define(self.stage, p+'/CoveLight')
         glow.CreateWidthAttr(2.4)
         glow.CreateHeightAttr(.06)
         glow.CreateIntensityAttr(1300)
         glow.CreateNormalizeAttr(True)
         glow.CreateColorAttr(Gf.Vec3f(1, .65, .30))
-        glow.AddTranslateOp().Set(Gf.Vec3d(0, -.15, 2.40))
+        glow.AddTranslateOp().Set(Gf.Vec3d(0, -.28, 2.40))
         for i, x in enumerate([elevator_x-.6, elevator_x+.6]):
             self.box(f'/World/Fixtures/Tactile_{i}', (x, -.70, .003), (.30, .30, .006), 'Yellow')
             for row in range(5):
                 for col in range(5):
                     self.cylinder(f'/World/Fixtures/TactileDot_{i}_{row}_{col}', (x+(row-2)*.052, -.7+(col-2)*.052, .007), .011, .004, 'Yellow', False)
 
-    def cameras(self):
+    def review_views(self):
+        # Review poses are plain JSON. The deliverable stage contains no cameras.
         views = {
             'Corridor': ((4.4, 0, 1.58), (18, 0, 1.43), 18),
             'StartStairs': ((2.4, .45, 1.55), (2.65, -4.1, 1.05), 17),
@@ -419,14 +469,10 @@ class Builder:
             'PlantAlcove': ((32.65, .45, 1.55), (33.3, -3.6, 1.1), 17),
             'Return': ((30.8, 0, 1.58), (3, 0, 1.43), 18),
             'Overview': ((25, -38, 48), (19.2, 0, .1), 23),
+            'ExteriorFront': ((-14, -44, 12), (17, -.7, 3.5), 30),
+            'ExteriorRear': ((53, 38, 25), (20, 0, 4), 30),
+            'DoorRecess': ((6.1, -.45, 1.60), (5.4, 1.05, 1.36), 28),
         }
-        for name, (eye, target, focal) in views.items():
-            camera = UsdGeom.Camera.Define(self.stage, '/World/Cameras/'+name)
-            camera.AddTransformOp().Set(Gf.Matrix4d().SetLookAt(Gf.Vec3d(*eye), Gf.Vec3d(*target), Gf.Vec3d(0, 0, 1)).GetInverse())
-            camera.CreateFocalLengthAttr(focal)
-            camera.CreateHorizontalApertureAttr(24)
-            camera.CreateVerticalApertureAttr(32)
-            camera.CreateClippingRangeAttr(Gf.Vec2f(.03, 200))
         for name, item in self.c['spawn_points'].items():
             prim = self.group('/World/SpawnPoints/'+name, item['position'], item['yaw_deg'])
             prim.CreateAttribute('e10:robotBaseHeight', Sdf.ValueTypeNames.Double).Set(.55)
@@ -456,9 +502,10 @@ class Builder:
             self.box(f'/World/Fixtures/WallConduit_{i}', (x, self.w/2-.008, 2.35), (4.5, .016, .014), 'DoorWhite', False)
         self.poster('/World/Fixtures/Quiet', (4.5, .86, .35), .25, .50, 'QuietSign', 90)
         self.box('/World/Fixtures/QuietStand', (4.5, .89, .30), (.045, .27, .60), 'DoorWhite')
-        self.box('/World/Fixtures/FireCabinet', (8.4, self.w/2-.015, .92), (.45, .035, 1.16), 'Metal', False)
-        self.cylinder('/World/Fixtures/FireAlarm', (8.4, self.w/2-.05, 1.37), .055, .04, 'Red', False)
-        views = self.cameras()
+        self.box('/World/Fixtures/FireCabinet', (8.4, self.w/2-.025, .92), (.45, .035, 1.16), 'Metal', False)
+        self.rod('/World/Fixtures/FireAlarm', (8.4, self.w/2-.04, 1.37), (8.4, self.w/2-.08, 1.37), .055, 'Red', False)
+        self.exterior_manifest = build_exterior(self)
+        views = self.review_views()
         self.stage.GetRootLayer().Save()
         return views
 
@@ -476,7 +523,8 @@ def main():
     stage = Usd.Stage.CreateNew(str(overview_path))
     stage.GetRootLayer().subLayerPaths = ['cbnu_e10.usda']
     UsdGeom.Imageable(stage.OverridePrim('/World/Ceilings')).CreateVisibilityAttr('invisible')
-    stage.GetRootLayer().customLayerData = {'cameraSettings': {'Perspective': {'position': Gf.Vec3d(*views['Overview'][0]), 'target': Gf.Vec3d(*views['Overview'][1])}}, 'purpose': 'Inspection only; ceiling collision remains active. Use cbnu_e10.usda for simulation.'}
+    UsdGeom.Imageable(stage.OverridePrim('/World/Exterior')).CreateVisibilityAttr('invisible')
+    stage.GetRootLayer().customLayerData = {'purpose': 'Inspection only; ceiling collision remains active. Use cbnu_e10.usda for simulation.'}
     stage.GetRootLayer().Save()
     manifest = {
         'world': str(filename.relative_to(ROOT)),
@@ -485,6 +533,9 @@ def main():
         'prims': sum(1 for _ in builder.stage.Traverse()),
         'collision_prims': sum(1 for p in builder.stage.Traverse() if p.HasAPI(UsdPhysics.CollisionAPI)),
         'views': {name: {'eye': eye, 'target': target, 'focal_length': focal} for name, (eye, target, focal) in views.items()},
+        'camera_prims': sum(p.IsA(UsdGeom.Camera) for p in builder.stage.Traverse()),
+        'containment_adjustments': builder.containment_adjustments,
+        'exterior': builder.exterior_manifest,
         'limitations': config['limitations'],
     }
     (OUT/'build_manifest.json').write_text(json.dumps(manifest, indent=2)+'\n')

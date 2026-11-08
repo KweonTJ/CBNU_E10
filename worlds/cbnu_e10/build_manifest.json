@@ -1,9 +1,9 @@
 {
   "world": "worlds/cbnu_e10/cbnu_e10.usda",
   "config_sha256": "104eb57915f4d2534e52621729c854c5cfc191d094df11daf034db06da95e060",
-  "stage_sha256": "2677595c18d418c307e91e4d5dee60f2fc2fddf41daa8d2501f0e7b585052624",
-  "prims": 1326,
-  "collision_prims": 406,
+  "stage_sha256": "2b224d16731f8515a00e488d5842d4098f2b1b38b1e23e1fbe3aba4724b3851f",
+  "prims": 5728,
+  "collision_prims": 2598,
   "views": {
     "Corridor": {
       "eye": [
@@ -82,7 +82,123 @@
         0.1
       ],
       "focal_length": 23
+    },
+    "ExteriorFront": {
+      "eye": [
+        -14,
+        -44,
+        12
+      ],
+      "target": [
+        17,
+        -0.7,
+        3.5
+      ],
+      "focal_length": 30
+    },
+    "ExteriorRear": {
+      "eye": [
+        53,
+        38,
+        25
+      ],
+      "target": [
+        20,
+        0,
+        4
+      ],
+      "focal_length": 30
+    },
+    "DoorRecess": {
+      "eye": [
+        6.1,
+        -0.45,
+        1.6
+      ],
+      "target": [
+        5.4,
+        1.05,
+        1.36
+      ],
+      "focal_length": 28
     }
+  },
+  "camera_prims": 0,
+  "containment_adjustments": [
+    {
+      "prim": "/World/Fixtures/Plants/Plant_00",
+      "translation_xy_m": [
+        0.08331405401229475,
+        0.051284526586532486
+      ],
+      "wall_clearance_m": 0.08
+    },
+    {
+      "prim": "/World/Fixtures/Plants/Plant_03",
+      "translation_xy_m": [
+        -0.10713722586631746,
+        0.0
+      ],
+      "wall_clearance_m": 0.08
+    },
+    {
+      "prim": "/World/Fixtures/Plants/Plant_05",
+      "translation_xy_m": [
+        0.23421722531318423,
+        0.0
+      ],
+      "wall_clearance_m": 0.08
+    }
+  ],
+  "exterior": {
+    "source": {
+      "building": "CBNU E10 / Electrical & Computer Engineering the 2nd Hall",
+      "accessed_date_kst": "2026-11-09",
+      "source_page": "https://chungbuk.ac.kr/english/selectWebCampusList.do?key=736",
+      "source_image": "https://chungbuk.ac.kr/DATA/campus/20240405022354947_F3Rt.jpg",
+      "local_reference": "reference/exterior/cbnu_official_e10.jpg",
+      "identity_evidence": "Official campus map loadData entry buldNo=E10, campusNo=188 links this photo.",
+      "observed_features": [
+        "Six storeys with red brick cladding",
+        "A long academic wing with repeated rectangular windows",
+        "White horizontal ledges along the long wing",
+        "Taller end masses with continuous vertical blue glazing",
+        "Flat roofs, light coping and a large E10 sign"
+      ],
+      "estimated_geometry": {
+        "levels": 6,
+        "surveyed_level": 3,
+        "floor_to_floor": 4.16,
+        "x_min": -0.2,
+        "x_max": 38.6,
+        "rear_y": 7.45,
+        "main_front_y": -7.65,
+        "near_tower_front_y": -8.05,
+        "far_tower_front_y": -7.95,
+        "near_tower_end_x": 5.4,
+        "far_tower_start_x": 34.6,
+        "cladding_thickness": 0.2,
+        "window_sill": 0.92,
+        "window_height": 1.65,
+        "main_window_count": 10,
+        "main_window_width": 1.85,
+        "parapet_height": 0.65
+      },
+      "limitations": [
+        "Dimensions and hidden rear facade are approximate; the photo establishes appearance, not survey coordinates.",
+        "Floor-to-floor height 4.16 m is a modeling assumption consistent with two 13 x 0.16 m flights, not a measured building height.",
+        "Only the video-referenced third-floor corridor and existing stair flights are traversable interior reconstruction.",
+        "Other floors are exterior shell geometry; no interior rooms, full inter-floor stairs or operating lifts are claimed.",
+        "The adjacent blue-glass E9 building, cars, street and street furniture are not copied."
+      ]
+    },
+    "ground_z": -8.32,
+    "roof_z": 16.64,
+    "surveyed_corridor_z": 0,
+    "traversable_interior_levels": [
+      3
+    ],
+    "exterior_levels": 6
   },
   "limitations": [
     "Only the four user-supplied dimensions are measurement constraints; the 0.16 m riser is approximate.",

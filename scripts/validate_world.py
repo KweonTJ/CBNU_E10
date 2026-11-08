@@ -5,6 +5,7 @@ import json
 import math
 from pathlib import Path
 from pxr import Gf, Usd, UsdGeom, UsdPhysics, UsdShade, UsdUtils
+from inspect_containment import inspect_fixtures
 
 ROOT = Path(__file__).resolve().parents[1]
 WORLD = ROOT/'worlds/cbnu_e10/cbnu_e10.usda'
@@ -117,6 +118,39 @@ def main():
     check('All dependencies inside E10 repository', all(Path(str(p)).resolve().is_relative_to(ROOT) for p in assets))
     check('Exactly one physics scene', sum(p.IsA(UsdPhysics.Scene) for p in stage.Traverse())==1)
     check('Static environment has no accidental rigid bodies', not any(p.HasAPI(UsdPhysics.RigidBodyAPI) for p in stage.Traverse()))
+    check('Deliverable world contains no cameras', not any(p.IsA(UsdGeom.Camera) for p in stage.Traverse()) and not stage.GetPrimAtPath('/World/Cameras'))
+    overview = Usd.Stage.Open(str(WORLD.with_name('cbnu_e10_overview.usda')))
+    check('Overview composition contains no cameras', not any(p.IsA(UsdGeom.Camera) for p in overview.Traverse()))
+    containment = inspect_fixtures(stage, config)
+    check('Every fixture stays inside corridor or alcove walls', containment['success'], containment)
+    recessed_windows, blocked_apertures = [], []
+    for d in config['doors']:
+        door = stage.GetPrimAtPath('/World/Doors/'+d['name'])
+        for index in [0, 1]:
+            glass = stage.GetPrimAtPath(str(door.GetPath())+f'/Glass_{index}')
+            glass_box = cache.ComputeRelativeBound(glass, door).ComputeAlignedRange()
+            front = .035-.055/2
+            depths = [glass_box.GetMin()[1]-front]
+            for side in ['Left', 'Right', 'Top', 'Bottom']:
+                frame = stage.GetPrimAtPath(str(door.GetPath())+f'/GlassFrame_{index}_{side}')
+                depths.append(cache.ComputeRelativeBound(frame, door).ComputeAlignedRange().GetMin()[1]-front)
+            cx, _, cz = glass_box.GetMidpoint()
+            leaf = stage.GetPrimAtPath(str(door.GetPath())+f'/Leaf_{index}')
+            blockers = []
+            for solid in leaf.GetChildren():
+                local = cache.ComputeRelativeBound(solid, door).ComputeAlignedRange()
+                if local.GetMin()[0] < cx < local.GetMax()[0] and local.GetMin()[2] < cz < local.GetMax()[2]:
+                    blockers.append(str(solid.GetPath()))
+            blocked_apertures.extend(blockers)
+            if min(depths) >= .009 and glass_box.GetMax()[1] < .035+.055/2:
+                recessed_windows.append(str(glass.GetPath()))
+    check('All 32 door windows and their frames are recessed into the leaf', len(recessed_windows)==2*len(config['doors']), {'window_count':len(recessed_windows), 'glass_recess_m':.0355, 'frame_recess_m':.0095})
+    check('Door window apertures contain no solid door backing', not blocked_apertures, blocked_apertures)
+    exterior_config = json.loads((WORLD.parent/'config/exterior.json').read_text())
+    exterior_dims = exterior_config['estimated_geometry']
+    check('Photo-referenced exterior has six levels', exterior_dims['levels']==6 and all(stage.GetPrimAtPath(f'/World/Exterior/Facades/MainFront/Level_{i}') for i in range(1,7)))
+    envelope = bounds('/World/Exterior/RoomWings/GroundFloorSlab')
+    check('Unified exterior foundation surrounds corridor and stair bays', envelope.GetSize()[1]>15 and envelope.GetMin()[0]<0 and envelope.GetMax()[0]>config['estimated']['corridor_length'])
     report = {'success': all(x['passed'] for x in checks), 'stage_sha256': hashlib.sha256(WORLD.read_bytes()).hexdigest(), 'check_count': len(checks), 'colliders': len(colliders), 'checks': checks}
     out = ROOT/'outputs/validation'
     out.mkdir(parents=True, exist_ok=True)

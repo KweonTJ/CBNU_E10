@@ -5,6 +5,7 @@
 - 상위: [README](../README.md)
 - 입력: [CBNU-E10.mp4](/home/a/Downloads/CBNU-E10.mp4), 사용자 제공 치수 210cm·250cm·150cm·약 16cm
 - 제작 방식 참고: [기존 E9 README](/home/a/Isaac_Worlds_CBNU_E9/README.md). E9 원본은 수정하지 않았다.
+- 후속 변경: [카메라 제거와 소품 실내 정렬](2_camera_removal_fixture_containment.md). 현재 월드에는 저장 카메라가 없다.
 
 ## 영상 관찰과 모델 결정
 
@@ -26,7 +27,7 @@
 | 파일 | 주요 함수·역할 | 이유 |
 | --- | --- | --- |
 | [layout.json](../worlds/cbnu_e10/config/layout.json) | `measured`, `estimated`, `stairs`, `doors`, `evidence` | 제공 치수와 추정을 구분하고 수정 위치를 하나로 모음 |
-| [build_world.py](../scripts/build_world.py) | `Builder.floor`, `ceiling`, `walls`, `door`, `stairs`, `lobby`, `cameras` | 상대경로 재질과 정적 충돌을 가진 USD 생성 |
+| [build_world.py](../scripts/build_world.py) | `Builder.floor`, `ceiling`, `walls`, `door`, `stairs`, `lobby`, `review_views` | 상대경로 재질과 정적 충돌을 가진 USD 생성; 시점은 JSON에만 기록 |
 | [make_textures.py](../scripts/make_textures.py) | `main` | 반복 가능한 테라조·천장·안내판 재질 |
 | [extract_reference.py](../scripts/extract_reference.py) | `main` | 원본 영상의 2초 간격 증거 프레임 추출 |
 | [validate_world.py](../scripts/validate_world.py) | `main`, `contains` | 합성 Stage의 실제 치수, 의존성, 보행 공간 검사; 경사 메시의 실제 내부 검사 |

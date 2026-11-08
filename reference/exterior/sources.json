@@ -1,0 +1,29 @@
+{
+  "accessed_date_kst": "2026-11-09",
+  "primary_source": {
+    "title": "Chungbuk National University official campus map",
+    "url": "https://chungbuk.ac.kr/english/selectWebCampusList.do?key=736",
+    "building_code": "E10",
+    "building_name": "Electrical & Computer Engineering the 2nd Hall",
+    "campus_record_number": 188,
+    "photo_url": "https://chungbuk.ac.kr/DATA/campus/20240405022354947_F3Rt.jpg",
+    "local_photo": "cbnu_official_e10.jpg"
+  },
+  "identity_cross_check": {
+    "title": "CBNU Robotics Laboratory",
+    "url": "https://robotics.cbnu.ac.kr/index.php",
+    "observation": "The laboratory identifies its building as E10 (전자정보2관) and its rooms on the third floor."
+  },
+  "photo_observations": [
+    "Red-brick six-storey building marked E10",
+    "Long room wing between end masses",
+    "Continuous vertical blue glazing at the near end",
+    "Repeated window rows and off-white horizontal ledges",
+    "Flat roof and pale coping"
+  ],
+  "not_established_by_photo": [
+    "Exact length, depth, storey height and orientation of the filmed corridor",
+    "Hidden rear facade and floor plans",
+    "Room interiors, working lifts and complete stair connections"
+  ]
+}

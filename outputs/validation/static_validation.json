@@ -1,8 +1,8 @@
 {
   "success": true,
-  "stage_sha256": "2677595c18d418c307e91e4d5dee60f2fc2fddf41daa8d2501f0e7b585052624",
-  "check_count": 67,
-  "colliders": 406,
+  "stage_sha256": "2b224d16731f8515a00e488d5842d4098f2b1b38b1e23e1fbe3aba4724b3851f",
+  "check_count": 74,
+  "colliders": 2598,
   "checks": [
     {
       "check": "Z-up, meter units, default World",
@@ -336,6 +336,64 @@
     },
     {
       "check": "Static environment has no accidental rigid bodies",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Deliverable world contains no cameras",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Overview composition contains no cameras",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Every fixture stays inside corridor or alcove walls",
+      "passed": true,
+      "details": {
+        "success": true,
+        "geometry_count": 316,
+        "tolerance_m": 0.001,
+        "interior_rectangles_xy": [
+          [
+            0,
+            38.4,
+            -1.05,
+            1.05
+          ],
+          [
+            31.8,
+            34.8,
+            -4.05,
+            -1.05
+          ]
+        ],
+        "outside_geometry": []
+      }
+    },
+    {
+      "check": "All 32 door windows and their frames are recessed into the leaf",
+      "passed": true,
+      "details": {
+        "window_count": 32,
+        "glass_recess_m": 0.0355,
+        "frame_recess_m": 0.0095
+      }
+    },
+    {
+      "check": "Door window apertures contain no solid door backing",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "Photo-referenced exterior has six levels",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Unified exterior foundation surrounds corridor and stair bays",
       "passed": true,
       "details": null
     }

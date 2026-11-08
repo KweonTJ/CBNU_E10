@@ -1,9 +1,217 @@
 {
-  "success": false,
-  "state": "running",
-  "pid": 3796544,
-  "started_utc": "2026-11-08T16:24:10.298502+00:00",
-  "stage_sha256": "2677595c18d418c307e91e4d5dee60f2fc2fddf41daa8d2501f0e7b585052624",
-  "renders": [],
-  "physics_checks": []
+  "success": true,
+  "state": "complete",
+  "pid": 22505,
+  "started_utc": "2026-11-08T16:43:01.951491+00:00",
+  "stage_sha256": "2b224d16731f8515a00e488d5842d4098f2b1b38b1e23e1fbe3aba4724b3851f",
+  "renders": [
+    "ExteriorFront",
+    "ExteriorRear",
+    "Corridor",
+    "DoorRecess",
+    "StartStairs",
+    "FarLobby",
+    "PlantAlcove",
+    "Return",
+    "Overview"
+  ],
+  "physics_checks": [
+    {
+      "name": "drop_Corridor",
+      "expected_center_z": 0.055,
+      "actual_center_z": 0.05499999597668648,
+      "error_m": 4.023313522616423e-09,
+      "passed": true
+    },
+    {
+      "name": "drop_Alcove",
+      "expected_center_z": 0.055,
+      "actual_center_z": 0.05499999597668648,
+      "error_m": 4.023313522616423e-09,
+      "passed": true
+    },
+    {
+      "name": "drop_Start_Up_01",
+      "expected_center_z": 0.215,
+      "actual_center_z": 0.2149999886751175,
+      "error_m": 1.132488250399355e-08,
+      "passed": true
+    },
+    {
+      "name": "drop_Start_Up_07",
+      "expected_center_z": 1.175,
+      "actual_center_z": 1.1749998331069946,
+      "error_m": 1.6689300541550267e-07,
+      "passed": true
+    },
+    {
+      "name": "drop_Start_Up_13",
+      "expected_center_z": 2.1350000000000002,
+      "actual_center_z": 2.1349997520446777,
+      "error_m": 2.479553224965514e-07,
+      "passed": true
+    },
+    {
+      "name": "drop_Start_Down_01",
+      "expected_center_z": -0.10500000000000001,
+      "actual_center_z": -0.10500000417232513,
+      "error_m": 4.1723251242853365e-09,
+      "passed": true
+    },
+    {
+      "name": "drop_Start_Down_07",
+      "expected_center_z": -1.0650000000000002,
+      "actual_center_z": -1.065000057220459,
+      "error_m": 5.72204588156211e-08,
+      "passed": true
+    },
+    {
+      "name": "drop_Start_Down_13",
+      "expected_center_z": -2.025,
+      "actual_center_z": -2.0250003337860107,
+      "error_m": 3.3378601083100534e-07,
+      "passed": true
+    },
+    {
+      "name": "drop_Far_Up_01",
+      "expected_center_z": 0.215,
+      "actual_center_z": 0.2149999886751175,
+      "error_m": 1.132488250399355e-08,
+      "passed": true
+    },
+    {
+      "name": "drop_Far_Up_07",
+      "expected_center_z": 1.175,
+      "actual_center_z": 1.1749998331069946,
+      "error_m": 1.6689300541550267e-07,
+      "passed": true
+    },
+    {
+      "name": "drop_Far_Up_13",
+      "expected_center_z": 2.1350000000000002,
+      "actual_center_z": 2.1349997520446777,
+      "error_m": 2.479553224965514e-07,
+      "passed": true
+    },
+    {
+      "name": "drop_Far_Down_01",
+      "expected_center_z": -0.10500000000000001,
+      "actual_center_z": -0.10500000417232513,
+      "error_m": 4.1723251242853365e-09,
+      "passed": true
+    },
+    {
+      "name": "drop_Far_Down_07",
+      "expected_center_z": -1.0650000000000002,
+      "actual_center_z": -1.065000057220459,
+      "error_m": 5.72204588156211e-08,
+      "passed": true
+    },
+    {
+      "name": "drop_Far_Down_13",
+      "expected_center_z": -2.025,
+      "actual_center_z": -2.0250003337860107,
+      "error_m": 3.3378601083100534e-07,
+      "passed": true
+    },
+    {
+      "name": "ray_Corridor",
+      "expected_z": 0,
+      "actual_z": 0.0,
+      "collider": "/World/Floor/Corridor/Slab",
+      "passed": true
+    },
+    {
+      "name": "ray_Alcove",
+      "expected_z": 0,
+      "actual_z": 0.0,
+      "collider": "/World/Floor/PlantAlcove/Slab",
+      "passed": true
+    },
+    {
+      "name": "ray_Start_Up_01",
+      "expected_z": 0.16,
+      "actual_z": 0.1599999964237213,
+      "collider": "/World/Stairs/Start/Up/Tread_01",
+      "passed": true
+    },
+    {
+      "name": "ray_Start_Up_07",
+      "expected_z": 1.12,
+      "actual_z": 1.119999885559082,
+      "collider": "/World/Stairs/Start/Up/Tread_07",
+      "passed": true
+    },
+    {
+      "name": "ray_Start_Up_13",
+      "expected_z": 2.08,
+      "actual_z": 2.0799999237060547,
+      "collider": "/World/Stairs/Start/Up/Tread_13",
+      "passed": true
+    },
+    {
+      "name": "ray_Start_Down_01",
+      "expected_z": -0.16,
+      "actual_z": -0.1599999964237213,
+      "collider": "/World/Stairs/Start/Down/Tread_01",
+      "passed": true
+    },
+    {
+      "name": "ray_Start_Down_07",
+      "expected_z": -1.12,
+      "actual_z": -1.1200000047683716,
+      "collider": "/World/Stairs/Start/Down/Tread_07",
+      "passed": true
+    },
+    {
+      "name": "ray_Start_Down_13",
+      "expected_z": -2.08,
+      "actual_z": -2.080000162124634,
+      "collider": "/World/Stairs/Start/Down/Tread_13",
+      "passed": true
+    },
+    {
+      "name": "ray_Far_Up_01",
+      "expected_z": 0.16,
+      "actual_z": 0.1599999964237213,
+      "collider": "/World/Stairs/Far/Up/Tread_01",
+      "passed": true
+    },
+    {
+      "name": "ray_Far_Up_07",
+      "expected_z": 1.12,
+      "actual_z": 1.119999885559082,
+      "collider": "/World/Stairs/Far/Up/Tread_07",
+      "passed": true
+    },
+    {
+      "name": "ray_Far_Up_13",
+      "expected_z": 2.08,
+      "actual_z": 2.0799999237060547,
+      "collider": "/World/Stairs/Far/Up/Tread_13",
+      "passed": true
+    },
+    {
+      "name": "ray_Far_Down_01",
+      "expected_z": -0.16,
+      "actual_z": -0.1599999964237213,
+      "collider": "/World/Stairs/Far/Down/Tread_01",
+      "passed": true
+    },
+    {
+      "name": "ray_Far_Down_07",
+      "expected_z": -1.12,
+      "actual_z": -1.1200000047683716,
+      "collider": "/World/Stairs/Far/Down/Tread_07",
+      "passed": true
+    },
+    {
+      "name": "ray_Far_Down_13",
+      "expected_z": -2.08,
+      "actual_z": -2.080000162124634,
+      "collider": "/World/Stairs/Far/Down/Tread_13",
+      "passed": true
+    }
+  ],
+  "finished_utc": "2026-11-08T16:43:15.792817+00:00"
 }

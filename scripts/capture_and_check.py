@@ -41,16 +41,27 @@ async def main():
         settings.set('/rtx/post/tonemap/cm2Factor', 1.0)
         stage = context.get_stage()
         stage.SetEditTarget(stage.GetSessionLayer())
+        UsdGeom.Xform.Define(stage, '/ReviewCameras').CreateVisibilityAttr('invisible')
+        review_views = json.loads((WORLD.parent/'build_manifest.json').read_text())['views']
+        for name, view in review_views.items():
+            camera = UsdGeom.Camera.Define(stage, '/ReviewCameras/'+name)
+            camera.AddTransformOp().Set(Gf.Matrix4d().SetLookAt(Gf.Vec3d(*view['eye']), Gf.Vec3d(*view['target']), Gf.Vec3d(0, 0, 1)).GetInverse())
+            camera.CreateFocalLengthAttr(view['focal_length'])
+            camera.CreateHorizontalApertureAttr(36 if name.startswith('Exterior') else 24)
+            camera.CreateVerticalApertureAttr(22.5 if name.startswith('Exterior') else 32)
+            camera.CreateClippingRangeAttr(Gf.Vec2f(.03, 200))
         viewport = get_active_viewport()
         if viewport is None:
             raise RuntimeError('No rendering viewport available')
-        names = ['Corridor', 'StartStairs', 'FarLobby', 'PlantAlcove', 'Return', 'Overview', 'Corridor']
+        names = ['ExteriorFront', 'ExteriorRear', 'Corridor', 'DoorRecess', 'StartStairs', 'FarLobby', 'PlantAlcove', 'Return', 'Overview', 'Corridor', 'ExteriorFront']
         for name in names:
             overview = name=='Overview'
-            viewport.set_texture_resolution((1600, 900) if overview else (900, 1200))
-            viewport.camera_path = '/World/Cameras/'+name
+            viewport.set_texture_resolution((1600, 1000) if name.startswith('Exterior') else ((1600, 900) if overview else (900, 1200)))
+            viewport.camera_path = '/ReviewCameras/'+name
             ceiling = UsdGeom.Imageable(stage.GetPrimAtPath('/World/Ceilings'))
             ceiling.CreateVisibilityAttr().Set('invisible' if overview else 'inherited')
+            exterior = UsdGeom.Imageable(stage.GetPrimAtPath('/World/Exterior'))
+            exterior.CreateVisibilityAttr().Set('invisible' if overview else 'inherited')
             for _ in range(75):
                 await app.next_update_async()
             job = capture_viewport_to_file(viewport, str(OUT/(name+'.png')))
@@ -101,7 +112,7 @@ async def main():
                 'collider': str(hit.get('collision', '')), 'passed': actual is not None and abs(actual-z)<.005})
         timeline.stop()
         report['state'] = 'complete'
-        report['success'] = len(report['renders'])==6 and all(c['passed'] for c in report['physics_checks'])
+        report['success'] = len(report['renders'])==len(review_views) and all(c['passed'] for c in report['physics_checks'])
         print('E10_RUNTIME_RESULT '+json.dumps({'success': report['success'], 'physics_checks': len(report['physics_checks'])}), flush=True)
     except Exception as exc:
         import traceback

@@ -1,0 +1,20 @@
+{
+  "success": true,
+  "geometry_count": 316,
+  "tolerance_m": 0.001,
+  "interior_rectangles_xy": [
+    [
+      0,
+      38.4,
+      -1.05,
+      1.05
+    ],
+    [
+      31.8,
+      34.8,
+      -4.05,
+      -1.05
+    ]
+  ],
+  "outside_geometry": []
+}

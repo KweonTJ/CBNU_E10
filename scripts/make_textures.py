@@ -28,6 +28,24 @@ def main():
             shade = int(rng.integers(153, 192))
             draw.ellipse((x, y, x + 1, y + 2), fill=(shade, shade, shade))
     picture.save(OUT / 'ceiling.png')
+    # Brick tile covers 1.2 x 0.6 m: five bricks per row, eight courses.
+    picture = Image.new('RGB', (600, 300), (143, 130, 118))
+    draw = ImageDraw.Draw(picture)
+    for row in range(8):
+        shift = 60 if row%2 else 0
+        for col in range(-1, 6):
+            x, y = col*120+shift, row*37.5
+            red = int(rng.integers(126, 166))
+            color = (red, int(red*.53+rng.integers(0,12)), int(red*.43+rng.integers(0,12)))
+            draw.rectangle((x+3,y+2,x+117,y+35.5),fill=color)
+    data = np.array(picture).astype(float)
+    data += rng.normal(0,3,(300,600,1))
+    Image.fromarray(np.clip(data,0,255).astype('uint8')).save(OUT/'brick.png')
+    picture = Image.new('RGBA',(512,256),(255,255,255,0))
+    draw=ImageDraw.Draw(picture)
+    font=ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf',190)
+    draw.text((40,5),'E10',font=font,fill=(242,240,224,255))
+    picture.save(OUT/'building_sign.png')
     font_path = '/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf'
     picture = Image.new('RGB', (512, 768), (220, 223, 220))
     draw = ImageDraw.Draw(picture)
