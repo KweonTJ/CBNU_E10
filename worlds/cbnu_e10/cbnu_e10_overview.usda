@@ -1,0 +1,24 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary cameraSettings = {
+            dictionary Perspective = {
+                double3 position = (25, -38, 48)
+                double3 target = (19.2, 0, 0.1)
+            }
+        }
+        string purpose = "Inspection only; ceiling collision remains active. Use cbnu_e10.usda for simulation."
+    }
+    subLayers = [
+        @cbnu_e10.usda@
+    ]
+)
+
+over "World"
+{
+    over "Ceilings"
+    {
+        token visibility = "invisible"
+    }
+}
+

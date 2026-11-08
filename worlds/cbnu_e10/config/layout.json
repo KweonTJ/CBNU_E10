@@ -1,0 +1,75 @@
+{
+  "name": "CBNU E10 video-referenced corridor",
+  "date_kst": "2026-11-09",
+  "source_video": "/home/a/Downloads/CBNU-E10.mp4",
+  "units": "meter",
+  "measured": {
+    "corridor_clear_width": 2.1,
+    "corridor_clear_height": 2.5,
+    "stair_flight_width": 1.5,
+    "stair_riser": 0.16
+  },
+  "estimated": {
+    "corridor_length": 38.4,
+    "wall_thickness": 0.16,
+    "slab_thickness": 0.16,
+    "floor_tile": 0.3,
+    "floor_border_width": 0.3,
+    "ceiling_panel_length": 0.6,
+    "ceiling_panel_width": 0.3,
+    "door_height": 2.1,
+    "stair_visible_risers": 13,
+    "stair_tread": 0.28,
+    "stair_center_gap": 0.18,
+    "stair_entry_landing": 1.2,
+    "stair_terminal_landing": 1.2,
+    "stair_rail_height": 0.9,
+    "alcove_x_range": [31.8, 34.8],
+    "alcove_depth": 3.0
+  },
+  "stairs": [
+    {"name": "Start", "x": 2.4, "side": -1, "yaw": 180, "evidence_seconds": [2, 4, 80]},
+    {"name": "Far", "x": 36.0, "side": 1, "yaw": 0, "evidence_seconds": [42]}
+  ],
+  "doors": [
+    {"name": "L01", "x": 1.2, "side": 1, "width": 1.2, "style": "teal"},
+    {"name": "L02", "x": 5.4, "side": 1, "width": 1.2, "style": "teal"},
+    {"name": "L03", "x": 9.3, "side": 1, "width": 1.25, "style": "white"},
+    {"name": "L04", "x": 12.6, "side": 1, "width": 1.2, "style": "teal"},
+    {"name": "L05", "x": 16.2, "side": 1, "width": 1.25, "style": "white"},
+    {"name": "L06", "x": 19.8, "side": 1, "width": 1.2, "style": "teal"},
+    {"name": "L07", "x": 23.4, "side": 1, "width": 1.2, "style": "teal"},
+    {"name": "L08", "x": 27.0, "side": 1, "width": 1.2, "style": "teal"},
+    {"name": "L09", "x": 30.3, "side": 1, "width": 2.1, "style": "glazed"},
+    {"name": "R01", "x": 6.1, "side": -1, "width": 1.25, "style": "white"},
+    {"name": "R02", "x": 10.2, "side": -1, "width": 1.25, "style": "white"},
+    {"name": "R03", "x": 14.4, "side": -1, "width": 1.25, "style": "white"},
+    {"name": "R04", "x": 18.3, "side": -1, "width": 1.25, "style": "white"},
+    {"name": "R05", "x": 22.2, "side": -1, "width": 1.25, "style": "white"},
+    {"name": "R06", "x": 26.1, "side": -1, "width": 1.25, "style": "white"},
+    {"name": "R07", "x": 29.7, "side": -1, "width": 1.25, "style": "white"}
+  ],
+  "extinguishers": [[4.6, -1], [8.3, 1], [10.9, -1], [13.5, 1], [15.2, -1], [17.1, 1], [19.1, -1], [20.7, 1], [23.0, -1], [24.3, 1], [26.9, -1], [28.1, 1], [30.4, -1]],
+  "spawn_points": {
+    "CorridorStart": {"position": [4.4, 0, 0.55], "yaw_deg": 0},
+    "CorridorReturn": {"position": [31.0, 0, 0.55], "yaw_deg": 180},
+    "StartStairApproach": {"position": [3.24, -1.65, 0.55], "yaw_deg": -90},
+    "FarStairApproach": {"position": [35.16, 1.65, 0.55], "yaw_deg": 90}
+  },
+  "evidence": [
+    {"seconds": [0, 6, 16, 26, 48, 64, 76], "observation": "Straight corridor, teal and white doors, green floor borders, round downlights, black skirting, red extinguishers."},
+    {"seconds": [2, 4], "observation": "Start stairwell: ascending flight on left, descending void on right, stone steps, green walls, metal rail."},
+    {"seconds": [34, 36, 38], "observation": "Alcove on forward-right: plants, water dispenser and windows."},
+    {"seconds": [40, 42, 46], "observation": "Far stair opening on left, elevator with wood trim and tactile tiles on right, end window with guardrail."},
+    {"seconds": [48], "observation": "Directory sign visibly identifies E10 3F; no other-floor interior surveyed."}
+  ],
+  "limitations": [
+    "Only the four user-supplied dimensions are measurement constraints; the 0.16 m riser is approximate.",
+    "38.4 m length is an editable visual-layout estimate, not a surveyed or recovered video-odometry measurement.",
+    "13 risers are a visual count estimate; 0.28 m tread and terminal landings are inferred.",
+    "Far stairs and downward-flight completion reuse estimated start-flight dimensions; hidden geometry is not observed.",
+    "Only the filmed corridor level and stair terminal landings are modeled, not full upper/lower floors or rooms behind doors.",
+    "Room-door count, spacing, signs and elevator dimensions are approximate; no unverified room names are reproduced.",
+    "Closed doors and elevator are static; no robot policy or door/elevator animation is included."
+  ]
+}

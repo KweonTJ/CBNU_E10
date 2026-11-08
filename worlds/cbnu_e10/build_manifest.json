@@ -1,0 +1,96 @@
+{
+  "world": "worlds/cbnu_e10/cbnu_e10.usda",
+  "config_sha256": "104eb57915f4d2534e52621729c854c5cfc191d094df11daf034db06da95e060",
+  "stage_sha256": "2677595c18d418c307e91e4d5dee60f2fc2fddf41daa8d2501f0e7b585052624",
+  "prims": 1326,
+  "collision_prims": 406,
+  "views": {
+    "Corridor": {
+      "eye": [
+        4.4,
+        0,
+        1.58
+      ],
+      "target": [
+        18,
+        0,
+        1.43
+      ],
+      "focal_length": 18
+    },
+    "StartStairs": {
+      "eye": [
+        2.4,
+        0.45,
+        1.55
+      ],
+      "target": [
+        2.65,
+        -4.1,
+        1.05
+      ],
+      "focal_length": 17
+    },
+    "FarLobby": {
+      "eye": [
+        32.3,
+        0.08,
+        1.58
+      ],
+      "target": [
+        38.2,
+        -0.08,
+        1.4
+      ],
+      "focal_length": 18
+    },
+    "PlantAlcove": {
+      "eye": [
+        32.65,
+        0.45,
+        1.55
+      ],
+      "target": [
+        33.3,
+        -3.6,
+        1.1
+      ],
+      "focal_length": 17
+    },
+    "Return": {
+      "eye": [
+        30.8,
+        0,
+        1.58
+      ],
+      "target": [
+        3,
+        0,
+        1.43
+      ],
+      "focal_length": 18
+    },
+    "Overview": {
+      "eye": [
+        25,
+        -38,
+        48
+      ],
+      "target": [
+        19.2,
+        0,
+        0.1
+      ],
+      "focal_length": 23
+    }
+  },
+  "limitations": [
+    "Only the four user-supplied dimensions are measurement constraints; the 0.16 m riser is approximate.",
+    "38.4 m length is an editable visual-layout estimate, not a surveyed or recovered video-odometry measurement.",
+    "13 risers are a visual count estimate; 0.28 m tread and terminal landings are inferred.",
+    "Far stairs and downward-flight completion reuse estimated start-flight dimensions; hidden geometry is not observed.",
+    "Only the filmed corridor level and stair terminal landings are modeled, not full upper/lower floors or rooms behind doors.",
+    "Room-door count, spacing, signs and elevator dimensions are approximate; no unverified room names are reproduced.",
+    "Closed doors and elevator are static; no robot policy or door/elevator animation is included."
+  ]
+}

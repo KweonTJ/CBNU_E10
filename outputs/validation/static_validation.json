@@ -1,0 +1,343 @@
+{
+  "success": true,
+  "stage_sha256": "2677595c18d418c307e91e4d5dee60f2fc2fddf41daa8d2501f0e7b585052624",
+  "check_count": 67,
+  "colliders": 406,
+  "checks": [
+    {
+      "check": "Z-up, meter units, default World",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Corridor width 2.10 m and floor at z=0",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Clear corridor height 2.50 m",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "/World/Stairs/Start/Up/Tread_01 width/depth/top/collider",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "/World/Stairs/Start/Up/Tread_02 width/depth/top/collider",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "/World/Stairs/Start/Up/Tread_03 width/depth/top/collider",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "/World/Stairs/Start/Up/Tread_04 width/depth/top/collider",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "/World/Stairs/Start/Up/Tread_05 width/depth/top/collider",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "/World/Stairs/Start/Up/Tread_06 width/depth/top/collider",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "/World/Stairs/Start/Up/Tread_07 width/depth/top/collider",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "/World/Stairs/Start/Up/Tread_08 width/depth/top/collider",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "/World/Stairs/Start/Up/Tread_09 width/depth/top/collider",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "/World/Stairs/Start/Up/Tread_10 width/depth/top/collider",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "/World/Stairs/Start/Up/Tread_11 width/depth/top/collider",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "/World/Stairs/Start/Up/Tread_12 width/depth/top/collider",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "/World/Stairs/Start/Up/Tread_13 width/depth/top/collider",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Start/Up landing has no additional step",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "/World/Stairs/Start/Down/Tread_01 width/depth/top/collider",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "/World/Stairs/Start/Down/Tread_02 width/depth/top/collider",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "/World/Stairs/Start/Down/Tread_03 width/depth/top/collider",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "/World/Stairs/Start/Down/Tread_04 width/depth/top/collider",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "/World/Stairs/Start/Down/Tread_05 width/depth/top/collider",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "/World/Stairs/Start/Down/Tread_06 width/depth/top/collider",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "/World/Stairs/Start/Down/Tread_07 width/depth/top/collider",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "/World/Stairs/Start/Down/Tread_08 width/depth/top/collider",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "/World/Stairs/Start/Down/Tread_09 width/depth/top/collider",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "/World/Stairs/Start/Down/Tread_10 width/depth/top/collider",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "/World/Stairs/Start/Down/Tread_11 width/depth/top/collider",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "/World/Stairs/Start/Down/Tread_12 width/depth/top/collider",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "/World/Stairs/Start/Down/Tread_13 width/depth/top/collider",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Start/Down landing has no additional step",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "/World/Stairs/Far/Up/Tread_01 width/depth/top/collider",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "/World/Stairs/Far/Up/Tread_02 width/depth/top/collider",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "/World/Stairs/Far/Up/Tread_03 width/depth/top/collider",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "/World/Stairs/Far/Up/Tread_04 width/depth/top/collider",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "/World/Stairs/Far/Up/Tread_05 width/depth/top/collider",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "/World/Stairs/Far/Up/Tread_06 width/depth/top/collider",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "/World/Stairs/Far/Up/Tread_07 width/depth/top/collider",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "/World/Stairs/Far/Up/Tread_08 width/depth/top/collider",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "/World/Stairs/Far/Up/Tread_09 width/depth/top/collider",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "/World/Stairs/Far/Up/Tread_10 width/depth/top/collider",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "/World/Stairs/Far/Up/Tread_11 width/depth/top/collider",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "/World/Stairs/Far/Up/Tread_12 width/depth/top/collider",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "/World/Stairs/Far/Up/Tread_13 width/depth/top/collider",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Far/Up landing has no additional step",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "/World/Stairs/Far/Down/Tread_01 width/depth/top/collider",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "/World/Stairs/Far/Down/Tread_02 width/depth/top/collider",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "/World/Stairs/Far/Down/Tread_03 width/depth/top/collider",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "/World/Stairs/Far/Down/Tread_04 width/depth/top/collider",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "/World/Stairs/Far/Down/Tread_05 width/depth/top/collider",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "/World/Stairs/Far/Down/Tread_06 width/depth/top/collider",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "/World/Stairs/Far/Down/Tread_07 width/depth/top/collider",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "/World/Stairs/Far/Down/Tread_08 width/depth/top/collider",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "/World/Stairs/Far/Down/Tread_09 width/depth/top/collider",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "/World/Stairs/Far/Down/Tread_10 width/depth/top/collider",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "/World/Stairs/Far/Down/Tread_11 width/depth/top/collider",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "/World/Stairs/Far/Down/Tread_12 width/depth/top/collider",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "/World/Stairs/Far/Down/Tread_13 width/depth/top/collider",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Far/Down landing has no additional step",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Finite collider extents",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "Bound materials on every collider",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "Central 1.30 m corridor passage remains clear",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "Stair centerlines have 2 m headroom",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "No unresolved USD or texture dependencies",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "All dependencies inside E10 repository",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Exactly one physics scene",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Static environment has no accidental rigid bodies",
+      "passed": true,
+      "details": null
+    }
+  ]
+}

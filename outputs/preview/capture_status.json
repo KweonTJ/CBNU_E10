@@ -1,0 +1,9 @@
+{
+  "success": false,
+  "state": "running",
+  "pid": 3796544,
+  "started_utc": "2026-11-08T16:24:10.298502+00:00",
+  "stage_sha256": "2677595c18d418c307e91e4d5dee60f2fc2fddf41daa8d2501f0e7b585052624",
+  "renders": [],
+  "physics_checks": []
+}
