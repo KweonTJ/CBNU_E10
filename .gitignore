@@ -3,4 +3,4 @@ __pycache__/
 .cache/
 outputs/runtime/
 *.log
-
+.vscode/
