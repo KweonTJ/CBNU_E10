@@ -151,10 +151,12 @@ bash scripts/render_headless.sh
 
 ## 주행 영상
 
+최신 검수본은 [7. 17001 보정 최종](<outputs/recordings/7. 17001 보정 최종/>)이다. [번호별 영상 목록](outputs/recordings/README.md)에서 처음 생성된 영상부터 순서대로 확인한다.
+
 | 모델·조건 | E9 | E10 |
 | --- | --- | --- |
-| 새 model_14601 · 복도 목표 3.0m/s | [영상](outputs/recordings/model14601_e10_e9_20261109/deliverables/E9_driving.mp4) · [사진 12장](outputs/recordings/model14601_e10_e9_20261109/deliverables/E9_screenshots) | [영상](outputs/recordings/model14601_e10_e9_20261109/deliverables/E10_driving.mp4) · [사진 12장](outputs/recordings/model14601_e10_e9_20261109/deliverables/E10_screenshots) |
-| 기존 model_14001 · 복도 목표 3.0m/s | [영상](outputs/recordings/corridor3_e10_e9_20261109/deliverables/E9_driving.mp4) | [영상](outputs/recordings/corridor3_e10_e9_20261109/deliverables/E10_driving.mp4) |
-| 기존 model_14001 · 복도 목표 1.2m/s | [영상](outputs/recordings/stable_e10_e9_20261109/deliverables/E9_driving.mp4) | [영상](outputs/recordings/stable_e10_e9_20261109/deliverables/E10_driving.mp4) |
+| model_14601 · 복도 목표 3.0m/s | [영상](<outputs/recordings/4. 14601 주행/deliverables/E9_driving.mp4>) · [사진 12장](<outputs/recordings/4. 14601 주행/deliverables/E9_screenshots>) | [영상](<outputs/recordings/4. 14601 주행/deliverables/E10_driving.mp4>) · [사진 12장](<outputs/recordings/4. 14601 주행/deliverables/E10_screenshots>) |
+| 기존 model_14001 · 복도 목표 3.0m/s | [영상](<outputs/recordings/3. E9·E10 고속 주행/deliverables/E9_driving.mp4>) | [영상](<outputs/recordings/3. E9·E10 고속 주행/deliverables/E10_driving.mp4>) |
+| 기존 model_14001 · 복도 목표 1.2m/s | [영상](<outputs/recordings/2. E9·E10 안정화/deliverables/E9_driving.mp4>) | [영상](<outputs/recordings/2. E9·E10 안정화/deliverables/E10_driving.mp4>) |
 
-새 모델 영상은 1080p·25fps이며 선택한 완주본이다. E9 상승은 첫 실패 후 seed 43 재시도 본이며 실패 원본도 보존한다. 기존 평가에서 촬영한 영상은 `outputs/recordings/evaluation/` 아래에 있다. 입력·CSV·검증 JSON은 HimLoco에 유지하고 [미디어 보관 변경 기록](docs/8_driving_media_storage.md)에 경로와 검증을 기록한다.
+위14601 영상은 1080p·25fps이며 선택한 완주본이다. E9 상승은 첫 실패 후 seed 43 재시도 본이며 실패 원본도 보존한다. 기존 평가에서 촬영한 영상은 `outputs/recordings/1. 개별 주행 원본/` 아래에 있다. 입력·CSV·검증 JSON은 HimLoco에 유지하고 [미디어 보관 변경 기록](docs/8_driving_media_storage.md)에 경로와 검증을 기록한다.
