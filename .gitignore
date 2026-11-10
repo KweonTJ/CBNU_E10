@@ -4,3 +4,5 @@ __pycache__/
 outputs/runtime/
 *.log
 .vscode/
+*.mp4
+*.zip

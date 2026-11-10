@@ -137,7 +137,7 @@ bash scripts/render_headless.sh
 
 이 저장소는 E10 디지털 트윈 월드 전용이다. USD·텍스처·배치 설정·참고 이미지·월드 생성/렌더/형상 검증 도구와 결과를 보관한다. `worlds/`와 `assets/`를 함께 유지하면 E9·강화학습 저장소 없이 사용할 수 있다.
 
-강화학습 코드·모델·로봇 제어·평가·주행 촬영 자료는 [HimLoco 연구 프로젝트](/home/a/HimLoco-AMP-Lab_UROP_II/experiments/cbnu_locomotion/README.md)로 이동했다. 이 디렉토리에는 학습 데이터나 연결용 심볼릭 링크를 남기지 않는다.
+강화학습 코드·모델·로봇 제어·평가 CSV·실행 로그는 [HimLoco 연구 프로젝트](/home/a/HimLoco-AMP-Lab_UROP_II/experiments/cbnu_locomotion/README.md)에서 관리한다. 사용자 후속 요청에 따라 **주행 영상·스크린샷·다운로드 ZIP은 이 월드의 `outputs/recordings/`에 보관**한다. 학습 코드·모델과 연결용 심볼릭 링크는 두지 않는다.
 
 ## 근거와 변경 기록
 
@@ -148,3 +148,13 @@ bash scripts/render_headless.sh
 - [6층 조명·문·계단 연결](docs/5_six_floor_lighting_and_doors.md)
 - [엘리베이터 옆 층 번호판](docs/6_elevator_floor_markers.md)
 - [월드 전용 디렉토리 분리](docs/7_world_repository_scope.md)
+
+## 주행 영상
+
+| 모델·조건 | E9 | E10 |
+| --- | --- | --- |
+| 새 model_14601 · 복도 목표 3.0m/s | [영상](outputs/recordings/model14601_e10_e9_20261109/deliverables/E9_driving.mp4) · [사진 12장](outputs/recordings/model14601_e10_e9_20261109/deliverables/E9_screenshots) | [영상](outputs/recordings/model14601_e10_e9_20261109/deliverables/E10_driving.mp4) · [사진 12장](outputs/recordings/model14601_e10_e9_20261109/deliverables/E10_screenshots) |
+| 기존 model_14001 · 복도 목표 3.0m/s | [영상](outputs/recordings/corridor3_e10_e9_20261109/deliverables/E9_driving.mp4) | [영상](outputs/recordings/corridor3_e10_e9_20261109/deliverables/E10_driving.mp4) |
+| 기존 model_14001 · 복도 목표 1.2m/s | [영상](outputs/recordings/stable_e10_e9_20261109/deliverables/E9_driving.mp4) | [영상](outputs/recordings/stable_e10_e9_20261109/deliverables/E10_driving.mp4) |
+
+새 모델 영상은 1080p·25fps이며 선택한 완주본이다. E9 상승은 첫 실패 후 seed 43 재시도 본이며 실패 원본도 보존한다. 기존 평가에서 촬영한 영상은 `outputs/recordings/evaluation/` 아래에 있다. 입력·CSV·검증 JSON은 HimLoco에 유지하고 [미디어 보관 변경 기록](docs/8_driving_media_storage.md)에 경로와 검증을 기록한다.
